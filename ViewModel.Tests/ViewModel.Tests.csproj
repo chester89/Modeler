@@ -64,6 +64,8 @@
     <Compile Include="Conventions\DefaultCommandConventionTests.cs" />
     <Compile Include="Conventions\BaseConventionTest.cs" />
     <Compile Include="Conventions\DefaultScalarConventionTests.cs" />
+    <Compile Include="FormValidator.cs" />
+    <Compile Include="FormViewModel.cs" />
     <Compile Include="Infrastructure\PropertyHandlerTests.cs" />
     <Compile Include="Infrastructure\PropertyInspectorTests.cs" />
     <Compile Include="IoC\IoCContainerTests.cs" />

@@ -87,8 +87,6 @@
     <Compile Include="MappingConventions\PropertyMappingConventionBase.cs" />
     <Compile Include="MappingConventions\PropertyMappingManager.cs" />
     <Compile Include="MappingConventions\StandardDateTimeConvention.cs" />
-    <Compile Include="FormValidator.cs" />
-    <Compile Include="Models\FormViewModel.cs" />
     <Compile Include="Models\ViewModelState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Actions\ActionBase.cs" />
