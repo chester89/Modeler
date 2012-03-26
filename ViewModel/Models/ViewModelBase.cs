@@ -27,6 +27,7 @@ namespace ViewModel.Models
         public static void SetDispatcher(IDispatcher appDispatcher)
         {
             Dispatcher = appDispatcher;
+            var s = Environment.CurrentDirectory;
         }
 
         protected ViewModelBase()
