@@ -50,6 +50,7 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -73,6 +74,7 @@
     <Compile Include="Conventions\DefaultScalarConvention.cs" />
     <Compile Include="Conventions\IScalarPropertyConvention.cs" />
     <Compile Include="Conventions\PostSharpPropertyInfo.cs" />
+    <Compile Include="IMessenger.cs" />
     <Compile Include="Infrastructure\IDispatcher.cs" />
     <Compile Include="Infrastructure\IExpressionHandler.cs" />
     <Compile Include="Infrastructure\PropertyHandler.cs" />
@@ -80,6 +82,7 @@
     <Compile Include="IoC\IoCContainer.cs" />
     <Compile Include="IoC\IDependencyConfigurator.cs" />
     <Compile Include="IoC\IDependencyResolver.cs" />
+    <Compile Include="IoC\Registries\CommonRegistry.cs" />
     <Compile Include="IoC\Registries\ValidationProviderRegistry.cs" />
     <Compile Include="IoC\StructureMapDependencyConfigurator.cs" />
     <Compile Include="IoC\StructureMapDependencyResolver.cs" />
@@ -87,6 +90,7 @@
     <Compile Include="MappingConventions\PropertyMappingConventionBase.cs" />
     <Compile Include="MappingConventions\PropertyMappingManager.cs" />
     <Compile Include="MappingConventions\StandardDateTimeConvention.cs" />
+    <Compile Include="Messenger.cs" />
     <Compile Include="Models\ViewModelState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Actions\ActionBase.cs" />

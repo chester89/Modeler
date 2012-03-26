@@ -57,5 +57,13 @@ namespace ViewModel.Tests.IoC
 
             Assert.IsInstanceOf<StructureMapDependencyResolver>(IoCContainer.Resolver);
         }
+
+        [Test]
+        public void DefaultMessengerIsMessengerUsingMBshow()
+        {
+            var messenger = IoCContainer.Resolver.TryGetInstance<IMessenger>();
+
+            Assert.IsInstanceOf<Messenger>(messenger);
+        }
     }
 }

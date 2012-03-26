@@ -1,8 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Linq.Expressions;
+using System.Windows;
 using System.Windows.Input;
-using System.Windows.Threading;
 using ViewModel.Aspects;
 using ViewModel.Actions;
 using ViewModel.Infrastructure;
@@ -23,17 +22,33 @@ namespace ViewModel.Models
         public ViewModelState State { get; protected set; }
         public bool IsSelected { get; protected set; }
         protected static IDispatcher Dispatcher;
+        protected IMessenger Messenger;
 
         public static void SetDispatcher(IDispatcher appDispatcher)
         {
             Dispatcher = appDispatcher;
-            var s = Environment.CurrentDirectory;
+        }
+
+        private void Init()
+        {
+            IsValidationOn = true;
+            State = ViewModelState.Still;
+            //if (Application.Current.Dispatcher != null)
+            //{
+            //    Dispatcher = new DefaultDispatcher(Application.Current.Dispatcher);
+            //}
         }
 
         protected ViewModelBase()
         {
-            IsValidationOn = true;
-            State = ViewModelState.Still;
+            Init();
+            Messenger = IoCContainer.Resolver.TryGetInstance<IMessenger>();
+        }
+
+        protected ViewModelBase(IMessenger messenger)
+        {
+            Init();
+            Messenger = messenger;
         }
 
         public void SetParent(ViewModelBase parent)
