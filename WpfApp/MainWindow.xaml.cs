@@ -18,13 +18,11 @@ namespace WpfPostSharpTesting
         {
             InitializeComponent();
 
-            var viewModel = new FormViewModel()
-                                {
-                                    Title = "PostSharp testing",
-                                    Text = "Hello"
-                                };
-
-            DataContext = viewModel;
+            DataContext = new FormViewModel()
+                              {
+                                  Title = "PostSharp testing",
+                                  Text = "Hello"
+                              };
 
             ViewModelBase.SetDispatcher(new DefaultDispatcher(Application.Current.Dispatcher));
 

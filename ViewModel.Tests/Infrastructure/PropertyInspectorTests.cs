@@ -9,7 +9,7 @@ using ViewModel.Infrastructure;
 
 namespace ViewModel.Tests.Infrastructure
 {
-    [Ignore]
+    [Ignore("Not ready yet")]
     [TestFixture]
     public class PropertyInspectorTests
     {
