@@ -10,4 +10,4 @@ _ReSharper.*
 *.cache
 *.swp
 
-!packages/repositories.config
+!/packages/repositories.config
