@@ -16,8 +16,7 @@ namespace ViewModel.Models
         {
             get
             {
-                var command = new Command(par => { TaskbarIconFlushes = !TaskbarIconFlushes; }, viewModelInstance: this);
-                return command;
+                return new Command(par => { TaskbarIconFlushes = !TaskbarIconFlushes; }, viewModelInstance: this);
             }
         }
 
