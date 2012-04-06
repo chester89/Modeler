@@ -1,4 +1,7 @@
-﻿using System.Windows.Shell;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Windows.Shell;
 using System.Windows.Input;
 using ViewModel.Actions;
 
@@ -11,6 +14,7 @@ namespace ViewModel.Models
         public double BarValue { get; set; }
         public TaskbarItemProgressState BarState { get; set; }
         public bool TaskbarIconFlushes { get; set; }
+        public ObservableCollection<int> Collection { get; set; }
 
         public ICommand Flash
         {
@@ -27,15 +31,25 @@ namespace ViewModel.Models
                 return new ActionBase(
                     par =>
                         {
-                            if (BarValue.Equals(0))
+                            Collection = new ConcurrentObservableCollection<int> { 15 };
+                            Task.Factory.StartNew(() =>
                             {
-                                BarState = TaskbarItemProgressState.Normal;
-                            }
-                            BarValue = BarValue + 0.05;
-                            if (BarValue >= 0.95)
-                            {
-                                BarState = TaskbarItemProgressState.Error;
-                            }
+                                for (int i = 0; i < 100; i++)
+                                {
+                                    Collection.Add(i);
+                                }
+                            }).ContinueWith(prev => Messenger.SendMessage("All 100 items added OK from worker thread", "All good"));
+                            Collection.Add(20);
+
+                            //if (BarValue.Equals(0))
+                            //{
+                            //    BarState = TaskbarItemProgressState.Normal;
+                            //}
+                            //BarValue = BarValue + 0.05;
+                            //if (BarValue >= 0.95)
+                            //{
+                            //    BarState = TaskbarItemProgressState.Error;
+                            //}
                         });
             }
         }

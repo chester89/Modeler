@@ -33,10 +33,6 @@ namespace ViewModel.Models
         {
             IsValidationOn = true;
             State = ViewModelState.Still;
-            //if (Application.Current.Dispatcher != null)
-            //{
-            //    Dispatcher = new DefaultDispatcher(Application.Current.Dispatcher);
-            //}
         }
 
         protected ViewModelBase()
@@ -85,9 +81,10 @@ namespace ViewModel.Models
         }
 
         /// <summary>
-        /// Executes action on UI thread
+        /// Executes provided <paramref name="action"/> on UI thread
         /// </summary>
-        public virtual void OnUiThread(Action action)
+        /// <param name="action"></param>
+        public static void RunInUi(Action action)
         {
             if (Dispatcher != null)
             {
@@ -97,6 +94,14 @@ namespace ViewModel.Models
             {
                 throw new ArgumentException("Dispatcher field not initialised!");
             }
+        }
+
+        /// <summary>
+        /// Executes <paramref name="action"/> on UI thread
+        /// </summary>
+        public virtual void OnUiThread(Action action)
+        {
+            RunInUi(action);
         }
 
         public virtual event PropertyChangedEventHandler PropertyChanged;

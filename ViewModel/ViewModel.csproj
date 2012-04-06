@@ -67,6 +67,7 @@
     <Compile Include="Actions\Command.cs" />
     <Compile Include="Actions\ExitContext.cs" />
     <Compile Include="Actions\Query.cs" />
+    <Compile Include="ConcurrentObservableCollection.cs" />
     <Compile Include="Conventions\ConventionBase.cs" />
     <Compile Include="Conventions\ConventionManager.cs" />
     <Compile Include="Conventions\DefaultCollectionConvention.cs" />

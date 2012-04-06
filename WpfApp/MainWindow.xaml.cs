@@ -18,14 +18,13 @@ namespace WpfPostSharpTesting
         {
             InitializeComponent();
 
-            DataContext = new FormViewModel()
-                              {
-                                  Title = "PostSharp testing",
-                                  Text = "Hello"
-                              };
-
             ViewModelBase.SetDispatcher(new DefaultDispatcher(Application.Current.Dispatcher));
 
+            DataContext = new FormViewModel()
+            {
+                Title = "PostSharp testing",
+                Text = "Hello"
+            };
             //how to develop attached property that turn on/off validation on textboxes
             //var depProperty = TextBox.TextProperty;
 
