@@ -1,7 +1,9 @@
 obj
 bin
+packages
 packages/*
 _ReSharper.*
+*.DotSettings*
 *.csproj.user
 *.resharper
 *.resharper.user
@@ -9,5 +11,4 @@ _ReSharper.*
 *.cache
 *.swp
 
-!/packages/repositories.config
-!/packages/PostSharp.*/tools/PostSharp*
+!packages/PostSharp.*/tools/
