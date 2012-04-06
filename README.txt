@@ -23,5 +23,5 @@ Roadmap for nearest future is this:
 I know code in its current state is far from perfect, but I believe I'm moving in right direction. 
 I think first release will come in April 2012.
 As always, your feedback is kindly appreciated, folks. Feel free to ping we on twitter @chester89 for any suggestions and questions
-if you have any.  
+if you have any.
  

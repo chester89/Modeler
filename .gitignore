@@ -1,9 +1,10 @@
 obj
 bin
-packages
 packages/*
+packages/PostSharp.*/*
+packages/PostSharp.*/tools/*
 _ReSharper.*
-*.DotSettings*
+*sln.DotSettings.*
 *.csproj.user
 *.resharper
 *.resharper.user
@@ -11,4 +12,6 @@ _ReSharper.*
 *.cache
 *.swp
 
-!packages/PostSharp.*/tools/
+!packages/PostSharp*/
+!packages/PostSharp*/tools/
+!packages/PostSharp*/tools/PostSharp.targets
