@@ -86,14 +86,10 @@ namespace ViewModel.Models
         /// <param name="action"></param>
         public static void RunInUi(Action action)
         {
-            if (Dispatcher != null)
-            {
-                Dispatcher.Invoke(action);
-            }
+            if (Dispatcher.OnUiThread)
+                action();
             else
-            {
-                throw new ArgumentException("Dispatcher field not initialised!");
-            }
+                Dispatcher.Invoke(action);
         }
 
         /// <summary>

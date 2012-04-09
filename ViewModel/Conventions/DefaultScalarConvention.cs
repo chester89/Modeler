@@ -60,7 +60,7 @@ namespace ViewModel.Conventions
 
         protected override bool AppliesCore(PropertyInfo property)
         {
-            return (!property.PropertyType.IsClosedTypeOf(typeof(ObservableCollection<>)) &&
+            return (!property.PropertyType.IsClosedTypeOf(OpenGenericTypeForCollection) &&
                     !property.PropertyType.IsAssignableFrom(typeof(ICommand)));
         }
     }

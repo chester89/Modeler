@@ -46,7 +46,7 @@ namespace ViewModel.Conventions
             if (IsCollectionOfDerivedTypeOfViewModel(info.PropertyType))
             {
                 var viewModelCollection = info.PropertyValue as INotifyCollectionChanged;
-                viewModelCollection.CollectionChanged += (e, a) => { OnCollectionChanged(info, a); };
+                viewModelCollection.CollectionChanged += (e, a) => OnCollectionChanged(info, a);
             }
 
             info.Instance.NotifyPropertyChanged(info.PropertyName);
@@ -55,7 +55,7 @@ namespace ViewModel.Conventions
         private bool IsCollectionOfDerivedTypeOfViewModel(Type propertyType)
         {
             Type firstGenericArgument = propertyType.GetGenericArguments().First();
-            return propertyType.IsClosedTypeOf(typeof (ObservableCollection<>))
+            return propertyType.IsClosedTypeOf(OpenGenericTypeForCollection)
                    && firstGenericArgument.IsAssignableTo<ViewModelBase>();
         }
 
@@ -76,7 +76,7 @@ namespace ViewModel.Conventions
 
         protected override bool AppliesCore(PropertyInfo property)
         {
-            return property.PropertyType.IsClosedTypeOf(typeof (ObservableCollection<>));
+            return property.PropertyType.IsClosedTypeOf(OpenGenericTypeForCollection);
         }
     }
 }

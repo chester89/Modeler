@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -26,6 +27,14 @@ namespace ViewModel.Conventions
         public ConventionBase(string path = ".")
         {
             this.path = path;
+        }
+
+        /// <summary>
+        /// Specifies open generic type for collection properties
+        /// </summary>
+        public Type OpenGenericTypeForCollection
+        {
+            get { return typeof (ObservableCollection<>); }
         }
 
         public bool Applies(Type targetType, string propertyName)

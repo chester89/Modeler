@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using NUnit.Framework;
 using ViewModel.Conventions;
@@ -11,19 +12,29 @@ namespace ViewModel.Tests.Conventions
     {
         #region Setup/Teardown
 
+        private Type CloseCollectionWith<T>()
+        {
+            return Convention.OpenGenericTypeForCollection.MakeGenericType(new[] {typeof(T)});
+        }
+
+        private ICollection<T> GetCollectionInstance<T>()
+        {
+            return Activator.CreateInstance(CloseCollectionWith<T>()) as ICollection<T>;
+        }
+
         public override void SetUp()
         {
             base.SetUp();
-            propertyMock.SetupProperty(m => m.PropertyType, typeof (ObservableCollection<double>));
+            Convention = new DefaultCollectionConvention();
 
-            convention = new DefaultCollectionConvention();
+            PropertyMock.SetupProperty(m => m.PropertyType, CloseCollectionWith<double>());
         }
 
         #endregion
 
         public override void OnPropertyGetCallsCorrespondingMethodOnParameter()
         {
-            propertyMock.SetupProperty(m => m.PropertyValue, null);
+            PropertyMock.SetupProperty(m => m.PropertyValue, null);
 
             base.OnPropertyGetCallsCorrespondingMethodOnParameter();
         }
@@ -32,9 +43,9 @@ namespace ViewModel.Tests.Conventions
         public void AppliesOnlyToCollections()
         {
             //Act
-            bool collectionResult = convention.Applies<TestViewModel>(vm => vm.List);
-            bool commandResult = convention.Applies<TestViewModel>(vm => vm.Edit);
-            bool scalarResult = convention.Applies<TestViewModel>(vm => vm.Message);
+            bool collectionResult = Convention.Applies<TestViewModel>(vm => vm.List);
+            bool commandResult = Convention.Applies<TestViewModel>(vm => vm.Edit);
+            bool scalarResult = Convention.Applies<TestViewModel>(vm => vm.Message);
 
             //Assert
             Assert.True(collectionResult);
@@ -46,22 +57,23 @@ namespace ViewModel.Tests.Conventions
         public void CallToPropertyGetCreatesEmptyCollectionIfPropertyIsNull()
         {
             //Arrange
-            propertyMock.SetupProperty(pr => pr.PropertyType, typeof (ObservableCollection<string>));
-            propertyMock.SetupProperty(pr => pr.PropertyValue, null);
+            var closedCollectionType = CloseCollectionWith<string>();
+            PropertyMock.SetupProperty(pr => pr.PropertyType, closedCollectionType);
+            PropertyMock.SetupProperty(pr => pr.PropertyValue, null);
             //Act
-            convention.OnPropertyGet(Property);
+            Convention.OnPropertyGet(Property);
             //Assert
-            Assert.IsInstanceOf<ObservableCollection<string>>(Property.PropertyValue);
+            Assert.IsInstanceOf(closedCollectionType, Property.PropertyValue);
         }
 
         [Test]
         public void CallToPropertyGetCreatesEmptyCollectionWith2GenericParametersIfPropertyIsNull()
         {
             //Arrange
-            propertyMock.SetupProperty(pr => pr.PropertyType, typeof (Dictionary<double, DateTime>));
-            propertyMock.SetupProperty(pr => pr.PropertyValue, null);
+            PropertyMock.SetupProperty(pr => pr.PropertyType, typeof (Dictionary<double, DateTime>));
+            PropertyMock.SetupProperty(pr => pr.PropertyValue, null);
             //Act
-            convention.OnPropertyGet(Property);
+            Convention.OnPropertyGet(Property);
             //Assert
             Assert.IsInstanceOf<Dictionary<double, DateTime>>(Property.PropertyValue);
         }
@@ -70,17 +82,15 @@ namespace ViewModel.Tests.Conventions
         public void CallToSetParentCallsCorrespondingMethodOnLastInstanceInCollection()
         {
             //Arrange
-            var collection = new ObservableCollection<TestViewModel>
-                                 {
-                                     new TestViewModel {Id = 20, Message = "This is pure on testing purposes"},
-                                     new TestViewModel {Id = 44}
-                                 };
+            var collection = GetCollectionInstance<TestViewModel>();
+            collection.Add(new TestViewModel {Id = 20, Message = "This is pure on testing purposes"});
+            collection.Add(new TestViewModel {Id = 44});
             var instance = new TestViewModel();
-            propertyMock.Setup(pr => pr.Instance).Returns(instance);
-            propertyMock.SetupProperty(pr => pr.PropertyType, collection.GetType());
-            propertyMock.SetupProperty(pr => pr.PropertyValue, collection);
+            PropertyMock.Setup(pr => pr.Instance).Returns(instance);
+            PropertyMock.SetupProperty(pr => pr.PropertyType, collection.GetType());
+            PropertyMock.SetupProperty(pr => pr.PropertyValue, collection);
             //Act
-            convention.SetParent(Property);
+            Convention.SetParent(Property);
             //Assert
             Assert.True(collection.Last().Parent.Equals(instance));
         }
@@ -89,27 +99,26 @@ namespace ViewModel.Tests.Conventions
         public void CallToPropertySetCauseSubscriptionToCollectionChangedAndSetParentOnLastElement()
         {
             //Arrange
-            var collection = new ObservableCollection<TestViewModel>
-                                 {
-                                     new TestViewModel {Id = 20, Message = "This is pure on testing purposes"},
-                                     new TestViewModel {Id = 44}
-                                 };
+            var collection = GetCollectionInstance<TestViewModel>();
+            collection.Add(new TestViewModel {Id = 20, Message = "This is pure on testing purposes"});
+            collection.Add(new TestViewModel { Id = 44 });
             int eventRaised = -1;
 
-            collection.CollectionChanged += (e, a) =>
+            const int someTestStubValue = 100;
+            (collection as INotifyCollectionChanged).CollectionChanged += (e, a) =>
                                                 {
-                                                    eventRaised = 100;
+                                                    eventRaised = someTestStubValue;
                                                 };
             var instance = new TestViewModel();
-            propertyMock.Setup(pr => pr.Instance).Returns(instance);
-            propertyMock.SetupProperty(pr => pr.PropertyType, collection.GetType());
-            propertyMock.SetupProperty(pr => pr.PropertyValue, collection);
+            PropertyMock.Setup(pr => pr.Instance).Returns(instance);
+            PropertyMock.SetupProperty(pr => pr.PropertyType, collection.GetType());
+            PropertyMock.SetupProperty(pr => pr.PropertyValue, collection);
             
             //Act
-            convention.OnPropertySet(Property);
+            Convention.OnPropertySet(Property);
             collection.Add(new TestViewModel());
             //Assert
-            Assert.That(eventRaised == 100);
+            Assert.That(eventRaised == someTestStubValue);
             Assert.True(collection.Last().Parent.Equals(instance));
         }
     }

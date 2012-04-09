@@ -6,9 +6,13 @@ using System.Windows.Threading;
 
 namespace ViewModel.Infrastructure
 {
+    /// <summary>
+    /// Provides abstraction over <see cref="Dispatcher"/>
+    /// </summary>
     public interface IDispatcher
     {
         void Invoke(Delegate method, params object[] args);
+        bool OnUiThread { get; }
     }
 
     public class DefaultDispatcher: IDispatcher
@@ -23,6 +27,11 @@ namespace ViewModel.Infrastructure
         public void Invoke(Delegate method, params object[] args)
         {
             applicationDispatcher.Invoke(method, args);
+        }
+
+        public bool OnUiThread
+        {
+            get { return applicationDispatcher.CheckAccess(); }
         }
     }
 }

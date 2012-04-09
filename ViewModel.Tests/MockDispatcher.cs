@@ -9,5 +9,10 @@ namespace ViewModel.Tests
         {
             method.Method.Invoke(method.Target, args);
         }
+
+        public bool OnUiThread
+        {
+            get { return true; }
+        }
     }
 }

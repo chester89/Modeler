@@ -12,14 +12,14 @@ namespace ViewModel.Tests.Conventions
         {
             base.SetUp();
 
-            convention = new DefaultCommandConvention();
+            Convention = new DefaultCommandConvention();
         }
 
         [Test]
         public void AppliesOnlyToICommand()
         {
-            var result = convention.Applies<TestViewModel>(vm => vm.Edit);
-            var differentResult = convention.Applies<TestViewModel>(vm => vm.Message);
+            var result = Convention.Applies<TestViewModel>(vm => vm.Edit);
+            var differentResult = Convention.Applies<TestViewModel>(vm => vm.Message);
 
             Assert.True(result);
             Assert.False(differentResult);
@@ -29,7 +29,7 @@ namespace ViewModel.Tests.Conventions
         public void SetParentCallDoesntSetParentProperty()
         {
             //Act
-            convention.SetParent(Property);
+            Convention.SetParent(Property);
 
             //Assert
             ViewModelBase parentAfterCall = Property.Instance.Parent;
@@ -41,18 +41,18 @@ namespace ViewModel.Tests.Conventions
         {
             //Arrange
             const string propValue = "SimpleProp";
-            propertyMock.Setup(m => m.PropertyName).Returns(propValue);
+            PropertyMock.Setup(m => m.PropertyName).Returns(propValue);
             
-            propertyMock.Setup(m => m.Instance.NotifyPropertyChanged(It.IsAny<string>())).Throws<InvalidOperationException>();
+            PropertyMock.Setup(m => m.Instance.NotifyPropertyChanged(It.IsAny<string>())).Throws<InvalidOperationException>();
 
             //Act
-            convention.OnPropertySet(Property);
+            Convention.OnPropertySet(Property);
 
             //Assert
             const string failureMessage = "Notification about property changed shouldn't happen but it did";
             Assert.DoesNotThrow(() =>
                                     {
-                                        propertyMock.Verify(m => m.Instance.NotifyPropertyChanged(Property.PropertyName), Times.Never(), failureMessage);
+                                        PropertyMock.Verify(m => m.Instance.NotifyPropertyChanged(Property.PropertyName), Times.Never(), failureMessage);
                                     });
         }
     }
