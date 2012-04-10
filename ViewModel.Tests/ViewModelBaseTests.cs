@@ -110,7 +110,8 @@ namespace ViewModel.Tests
         [Test]
         public void OnUiThreadThrowsIfDispatcherNotInitialized()
         {
-            Assert.Throws<ArgumentException>(() => ViewModel.OnUiThread(() => { }));
+            ViewModelBase.SetDispatcher(null);
+            Assert.Throws<NullReferenceException>(() => ViewModel.OnUiThread(() => { }));
         }
     }
 }

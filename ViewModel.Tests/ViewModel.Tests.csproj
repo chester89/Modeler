@@ -64,6 +64,7 @@
     <Compile Include="Actions\QueryTests.cs" />
     <Compile Include="Actions\ValidationCommandTests.cs" />
     <Compile Include="Actions\ValidationQueryTests.cs" />
+    <Compile Include="ConcurrentCollectionTests.cs" />
     <Compile Include="ConventionManager\WhenNoCustomConventionsRegistered.cs" />
     <Compile Include="Conventions\ConventionBaseTests.cs" />
     <Compile Include="Conventions\DefaultCollectionConventionTests.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Infrastructure\PropertyInspectorTests.cs" />
     <Compile Include="IoC\IoCContainerTests.cs" />
     <Compile Include="MockDispatcher.cs" />
+    <Compile Include="OnCollectionProperty.cs" />
     <Compile Include="PropertyMapping\PropertyMappingConventionBaseTests.cs" />
     <Compile Include="PropertyMapping\StandardDateTimeMappingConventionTests.cs" />
     <Compile Include="TestUtil\PropertySubscriberTests.cs" />

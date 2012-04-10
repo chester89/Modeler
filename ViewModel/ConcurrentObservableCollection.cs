@@ -13,29 +13,49 @@ namespace ViewModel
     /// <typeparam name="T">The type of elements stored inside collection</typeparam>
     public class ConcurrentObservableCollection<T>: ObservableCollection<T>
     {
+        private readonly ICollectionRunner collectionRunner;
+
+        public ConcurrentObservableCollection(ICollectionRunner collectionRunner)
+        {
+            this.collectionRunner = collectionRunner;
+        }
+
         protected override void InsertItem(int index, T item)
         {
-            ViewModelBase.RunInUi(() => base.InsertItem(index, item));
+            collectionRunner.Run(() => base.InsertItem(index, item));
         }
 
         protected override void ClearItems()
         {
-            ViewModelBase.RunInUi(() => base.ClearItems());
+            collectionRunner.Run(() => base.ClearItems());
         }
 
         protected override void RemoveItem(int index)
         {
-            ViewModelBase.RunInUi(() => base.RemoveItem(index));
+            collectionRunner.Run(() => base.RemoveItem(index));
         }
 
         protected override void MoveItem(int oldIndex, int newIndex)
         {
-            ViewModelBase.RunInUi(() => base.MoveItem(oldIndex, newIndex));
+            collectionRunner.Run(() => base.MoveItem(oldIndex, newIndex));
         }
 
         protected override void SetItem(int index, T item)
         {
-            ViewModelBase.RunInUi(() => base.SetItem(index, item));
+            collectionRunner.Run(() => base.SetItem(index, item));
+        }
+    }
+
+    public interface ICollectionRunner
+    {
+        void Run(Action action);
+    }
+
+    public class CollectionRunner: ICollectionRunner
+    {
+        public void Run(Action action)
+        {
+            ViewModelBase.RunInUi(action);
         }
     }
 }

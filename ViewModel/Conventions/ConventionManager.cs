@@ -20,14 +20,7 @@ namespace ViewModel.Conventions
 
         public void UseOnlyDefaultConventions()
         {
-            if (conventions == null)
-            {
-                conventions = new List<IPropertyConvention>();
-            }
-            else
-            {
-                conventions.Clear();
-            }
+            conventions.Clear();
 
             conventions.Add(new DefaultScalarConvention());
             conventions.Add(new DefaultCollectionConvention());
@@ -44,7 +37,7 @@ namespace ViewModel.Conventions
         /// </summary>
         public IPropertyConvention Convention(ViewModelBase instance, String propertyName)
         {
-            var customConvention = conventions.Where(c => c.Applies(instance.GetType(), propertyName)).SingleOrDefault();
+            var customConvention = conventions.SingleOrDefault(c => c.Applies(instance.GetType(), propertyName));
             if (customConvention != null)
             {
                 return customConvention;

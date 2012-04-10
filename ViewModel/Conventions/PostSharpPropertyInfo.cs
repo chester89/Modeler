@@ -18,7 +18,11 @@ namespace ViewModel.Conventions
         public object PropertyValue
         {
             get { return args.Value; }
-            set { args.Value = value; }
+            set
+            {
+                args.Value = value;
+                args.ProceedSetValue();
+            }
         }
 
         public object CurrentValue

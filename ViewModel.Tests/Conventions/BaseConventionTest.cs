@@ -1,7 +1,6 @@
 using Moq;
 using NUnit.Framework;
 using ViewModel.Conventions;
-using ViewModel.Tests;
 
 namespace ViewModel.Tests.Conventions
 {
@@ -10,6 +9,7 @@ namespace ViewModel.Tests.Conventions
     {
         protected Mock<IPropertyInfo> PropertyMock;
         protected ConventionBase Convention;
+        private string FailureMessage = "IPropertyInfo.Proceed{0} wasn't called while executing impl of " + typeof(IPropertyConvention).FullName + ".OnProperty{0}";
 
         public IPropertyInfo Property
         {
@@ -35,10 +35,7 @@ namespace ViewModel.Tests.Conventions
             Convention.OnPropertySet(Property);
 
             //Assert
-            var failureMessage =
-                string.Format("IPropertyInfo.ProceedSet() wasn't called while executing impl of {0}.OnPropertySet",
-                              typeof (IPropertyConvention).FullName);
-            Assert.DoesNotThrow(() => PropertyMock.Verify(m => m.ProceedSet(), Times.Once(), failureMessage));
+            Assert.DoesNotThrow(() => PropertyMock.Verify(m => m.ProceedSet(), Times.Once(), string.Format(FailureMessage, "Get")));
         }
 
         [Test]
@@ -51,10 +48,7 @@ namespace ViewModel.Tests.Conventions
             Convention.OnPropertyGet(Property);
 
             //Assert
-            var failureMessage =
-                string.Format("IPropertyInfo.ProceedGet() wasn't called while executing impl of {0}.OnPropertyGet",
-                              typeof(IPropertyConvention).FullName);
-            Assert.DoesNotThrow(() => PropertyMock.Verify(m => m.ProceedGet(), Times.Once(), failureMessage));
+            Assert.DoesNotThrow(() => PropertyMock.Verify(m => m.ProceedGet(), Times.Once(), string.Format(FailureMessage, "Set")));
         }
     }
 }

@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Linq;
-using System.Reflection;
 using PostSharp.Aspects;
 using PostSharp.Aspects.Advices;
 using PostSharp.Extensibility;
 using ViewModel.Conventions;
-using ViewModel.MappingConventions;
 using ViewModel.Models;
 
 namespace ViewModel.Aspects

@@ -34,7 +34,12 @@ namespace ViewModel.Conventions
         /// </summary>
         public Type OpenGenericTypeForCollection
         {
-            get { return typeof (ObservableCollection<>); }
+            get { return typeof (ConcurrentObservableCollection<>); }
+        }
+
+        public Type MinimumInterfaceForCollection
+        {
+            get { return typeof (ICollection<>); }
         }
 
         public bool Applies(Type targetType, string propertyName)

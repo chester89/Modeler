@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
+using System.Windows.Input;
 using StructureMap.Configuration.DSL;
+using ViewModel.Actions;
+using ViewModel.Conventions;
 
 namespace ViewModel.IoC.Registries
 {
@@ -12,8 +15,13 @@ namespace ViewModel.IoC.Registries
     {
         public CommonRegistry()
         {
-            For<IMessenger>().Use<Messenger>();
-            Scan(c => c.TheCallingAssembly());
+            For(typeof (ICollection<>)).Use(typeof (ConcurrentObservableCollection<>));
+            Scan(c =>
+                     {
+                         c.ExcludeType<Command>();
+                         c.TheCallingAssembly();
+                         c.WithDefaultConventions();
+                     });
         }
     }
 }

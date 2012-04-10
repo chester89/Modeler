@@ -18,7 +18,7 @@ namespace ViewModel
                 if (arguments.Any())
                 {
                     var closedGenericType = genericType.MakeGenericType(arguments);
-                    if (closedGenericType == closedType || closedGenericType.IsAssignableTo(genericType))
+                    if (closedGenericType == closedType || closedType.IsAssignableTo(closedGenericType))
                     {
                         return true;
                     }

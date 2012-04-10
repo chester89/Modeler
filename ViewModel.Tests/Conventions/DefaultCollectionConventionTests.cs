@@ -3,13 +3,25 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
+using Moq;
 using NUnit.Framework;
 using ViewModel.Conventions;
+using ViewModel.Models;
 
 namespace ViewModel.Tests.Conventions
 {
+    class MockCollectionRunner : ICollectionRunner
+    {
+        public void Run(Action action)
+        {
+            action();
+        }
+    }
+
     public class DefaultCollectionConventionTests : BaseConventionTest
     {
+        private ICollectionRunner collectionRunner;
+
         #region Setup/Teardown
 
         private Type CloseCollectionWith<T>()
@@ -19,13 +31,14 @@ namespace ViewModel.Tests.Conventions
 
         private ICollection<T> GetCollectionInstance<T>()
         {
-            return Activator.CreateInstance(CloseCollectionWith<T>()) as ICollection<T>;
+            return Activator.CreateInstance(CloseCollectionWith<T>(), new [] { collectionRunner }) as ICollection<T>;
         }
 
         public override void SetUp()
         {
             base.SetUp();
             Convention = new DefaultCollectionConvention();
+            collectionRunner = new MockCollectionRunner();
 
             PropertyMock.SetupProperty(m => m.PropertyType, CloseCollectionWith<double>());
         }
@@ -67,21 +80,10 @@ namespace ViewModel.Tests.Conventions
         }
 
         [Test]
-        public void CallToPropertyGetCreatesEmptyCollectionWith2GenericParametersIfPropertyIsNull()
-        {
-            //Arrange
-            PropertyMock.SetupProperty(pr => pr.PropertyType, typeof (Dictionary<double, DateTime>));
-            PropertyMock.SetupProperty(pr => pr.PropertyValue, null);
-            //Act
-            Convention.OnPropertyGet(Property);
-            //Assert
-            Assert.IsInstanceOf<Dictionary<double, DateTime>>(Property.PropertyValue);
-        }
-
-        [Test]
         public void CallToSetParentCallsCorrespondingMethodOnLastInstanceInCollection()
         {
             //Arrange
+            ViewModelBase.SetDispatcher(new MockDispatcher());
             var collection = GetCollectionInstance<TestViewModel>();
             collection.Add(new TestViewModel {Id = 20, Message = "This is pure on testing purposes"});
             collection.Add(new TestViewModel {Id = 44});
@@ -99,6 +101,7 @@ namespace ViewModel.Tests.Conventions
         public void CallToPropertySetCauseSubscriptionToCollectionChangedAndSetParentOnLastElement()
         {
             //Arrange
+            ViewModelBase.SetDispatcher(new MockDispatcher());
             var collection = GetCollectionInstance<TestViewModel>();
             collection.Add(new TestViewModel {Id = 20, Message = "This is pure on testing purposes"});
             collection.Add(new TestViewModel { Id = 44 });

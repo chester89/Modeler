@@ -34,9 +34,7 @@ namespace ViewModel.Conventions
 
             if (genericArguments.Any() && info.PropertyValue == null)
             {
-                Type concreteCollectionType =
-                    info.PropertyType.GetGenericTypeDefinition().MakeGenericType(genericArguments);
-                info.PropertyValue = Activator.CreateInstance(concreteCollectionType);
+                info.PropertyValue = IoC.IoCContainer.Resolver.TryGetInstance(MinimumInterfaceForCollection.MakeGenericType(genericArguments));
             }
         }
 
@@ -76,7 +74,7 @@ namespace ViewModel.Conventions
 
         protected override bool AppliesCore(PropertyInfo property)
         {
-            return property.PropertyType.IsClosedTypeOf(OpenGenericTypeForCollection);
+            return property.PropertyType.IsClosedTypeOf(MinimumInterfaceForCollection);
         }
     }
 }

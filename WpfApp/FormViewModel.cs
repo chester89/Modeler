@@ -31,25 +31,15 @@ namespace ViewModel.Models
                 return new ActionBase(
                     par =>
                         {
-                            Collection = new ConcurrentObservableCollection<int> { 15 };
-                            Task.Factory.StartNew(() =>
+                            if (BarValue.Equals(0))
                             {
-                                for (int i = 0; i < 100; i++)
-                                {
-                                    Collection.Add(i);
-                                }
-                            }).ContinueWith(prev => Messenger.SendMessage("All 100 items added OK from worker thread", "All good"));
-                            Collection.Add(20);
-
-                            //if (BarValue.Equals(0))
-                            //{
-                            //    BarState = TaskbarItemProgressState.Normal;
-                            //}
-                            //BarValue = BarValue + 0.05;
-                            //if (BarValue >= 0.95)
-                            //{
-                            //    BarState = TaskbarItemProgressState.Error;
-                            //}
+                                BarState = TaskbarItemProgressState.Normal;
+                            }
+                            BarValue = BarValue + 0.05;
+                            if (BarValue >= 0.95)
+                            {
+                                BarState = TaskbarItemProgressState.Error;
+                            }
                         });
             }
         }
