@@ -6,6 +6,7 @@ It also has:
  and CanExecute() will know about any property notification, so you as a developer don't need to bother
  - support for automatic notifying a user if particular operation have failed (just use the right ActionBase subclass for it)
  - baked-in IoC and validation support (StructureMap and FluentValidation are used by default, DataAnnotations can be used easily, planned support for NInject/Unity).
+ - automatic thread marshalling between UI and background threads when modifying collections of ViewModel classes
 It uses Convention over Configuration approach, so it allows you to override pretty much every aspect that you don't like.
 It also includes simple WPF example app.
 It is currently in pre-release mode, so please use code with caution. I haven't yet cleaned up some bits as I intended to, 

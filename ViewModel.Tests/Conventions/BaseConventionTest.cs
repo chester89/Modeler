@@ -35,7 +35,7 @@ namespace ViewModel.Tests.Conventions
             Convention.OnPropertySet(Property);
 
             //Assert
-            Assert.DoesNotThrow(() => PropertyMock.Verify(m => m.ProceedSet(), Times.Once(), string.Format(FailureMessage, "Get")));
+            Assert.DoesNotThrow(() => PropertyMock.Verify(m => m.ProceedSet(), Times.Once(), string.Format(FailureMessage, "Set")));
         }
 
         [Test]
@@ -48,7 +48,7 @@ namespace ViewModel.Tests.Conventions
             Convention.OnPropertyGet(Property);
 
             //Assert
-            Assert.DoesNotThrow(() => PropertyMock.Verify(m => m.ProceedGet(), Times.Once(), string.Format(FailureMessage, "Set")));
+            Assert.DoesNotThrow(() => PropertyMock.Verify(m => m.ProceedGet(), Times.Once(), string.Format(FailureMessage, "Get")));
         }
     }
 }
