@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using System.Windows.Shell;
+using ViewModel.Actions;
 using ViewModel.Models;
 
 namespace ViewModel.Tests
@@ -14,5 +16,16 @@ namespace ViewModel.Tests
         public ObservableCollection<int> List { get; set; }
         public ICommand Edit { get; set; }
         public DateTime SomeDate { get; set; }
+        public ICommand ForProperties 
+        { 
+            get
+            {
+                return new ActionBase(
+                    par =>
+                        {
+                            Message += "Hello";
+                        }, param => Id > 0);
+            } 
+        }
     }
 }

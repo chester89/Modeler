@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\ActionBaseTests.cs" />
+    <Compile Include="Actions\CanExecuteTests.cs" />
     <Compile Include="Actions\CommandTests.cs" />
     <Compile Include="Actions\QueryTests.cs" />
     <Compile Include="Actions\ValidationCommandTests.cs" />
