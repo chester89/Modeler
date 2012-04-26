@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
-using System.Text;
-using System.Windows.Input;
 using StructureMap.Configuration.DSL;
 using ViewModel.Actions;
 using ViewModel.Conventions;
@@ -20,6 +18,7 @@ namespace ViewModel.IoC.Registries
                      {
                          c.ExcludeType<Command>();
                          c.TheCallingAssembly();
+                         c.AddAllTypesOf<IPropertyConvention>();
                          c.WithDefaultConventions();
                      });
         }

@@ -11,6 +11,7 @@ namespace ViewModel.Conventions
 {
     public abstract class ConventionBase : IPropertyConvention
     {
+        protected readonly ICollectionBuilder collectionBuilder;
         private string path;
         private static readonly PropertyInspector Inspector;
 
@@ -19,27 +20,14 @@ namespace ViewModel.Conventions
             Inspector = new PropertyInspector();
         }
 
-        public ConventionBase(): this(".")
+        public ConventionBase(ICollectionBuilder collectionBuilder): this(".")
         {
-            
+            this.collectionBuilder = collectionBuilder;
         }
 
-        public ConventionBase(string path = ".")
+        private ConventionBase(string path = ".")
         {
             this.path = path;
-        }
-
-        /// <summary>
-        /// Specifies open generic type for collection properties
-        /// </summary>
-        public Type OpenGenericTypeForCollection
-        {
-            get { return typeof (ConcurrentObservableCollection<>); }
-        }
-
-        public Type MinimumInterfaceForCollection
-        {
-            get { return typeof (ICollection<>); }
         }
 
         public bool Applies(Type targetType, string propertyName)
@@ -48,8 +36,7 @@ namespace ViewModel.Conventions
 
             if (property == null)
             {
-                throw new ArgumentException(string.Format("Property {0} wasn't found on type {1}", propertyName,
-                                                          targetType.FullName));
+                throw new ArgumentException(string.Format("Property {0} wasn't found on type {1}", propertyName, targetType.FullName));
             }
             return AppliesCore(property);
         }

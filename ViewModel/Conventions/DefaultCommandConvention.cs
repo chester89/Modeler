@@ -5,6 +5,10 @@ namespace ViewModel.Conventions
 {
     public class DefaultCommandConvention: ConventionBase
     {
+        public DefaultCommandConvention(ICollectionBuilder collectionBuilder) : base(collectionBuilder)
+        {
+        }
+
         public override void OnPropertyGet(IPropertyInfo info)
         {
             info.ProceedGet();

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -12,11 +11,11 @@ namespace ViewModel.Conventions
 {
     public class DefaultScalarConvention: ConventionBase
     {
-        private readonly PropertyMappingManager MappingManager;
+        private readonly PropertyMappingManager mappingManager;
 
-        public DefaultScalarConvention()
+        public DefaultScalarConvention(ICollectionBuilder collectionBuilder): base(collectionBuilder)
         {
-            MappingManager = new PropertyMappingManager();
+            mappingManager = new PropertyMappingManager();
         }
 
         public override void SetParent(IPropertyInfo info)
@@ -48,9 +47,9 @@ namespace ViewModel.Conventions
 
         void MapProperty(IPropertyInfo info)
         {
-            var methodToInvoke = MappingManager.GetType().GetMethod("PropertyMappingFor").MakeGenericMethod(new[] { info.PropertyType });
+            var methodToInvoke = mappingManager.GetType().GetMethod("PropertyMappingFor").MakeGenericMethod(new[] { info.PropertyType });
 
-            dynamic mappingConvention = methodToInvoke.Invoke(MappingManager, new object[] { });
+            dynamic mappingConvention = methodToInvoke.Invoke(mappingManager, new object[] { });
             if (mappingConvention != null)
             {
                 info.PropertyValue = mappingConvention.Map(info.PropertyValue);
@@ -60,7 +59,7 @@ namespace ViewModel.Conventions
 
         protected override bool AppliesCore(PropertyInfo property)
         {
-            return (!property.PropertyType.IsClosedTypeOf(MinimumInterfaceForCollection) &&
+            return (!property.PropertyType.IsClosedTypeOf(collectionBuilder.GetMinimumCollectionInterface()) &&
                     !property.PropertyType.IsAssignableFrom(typeof(ICommand)));
         }
     }

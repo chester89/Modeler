@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Composition;
 using System.Linq;
-using System.Text;
 using StructureMap;
 using StructureMap.Configuration.DSL;
 
@@ -37,6 +35,11 @@ namespace ViewModel.IoC
         public Object TryGetInstance(Type requestedType)
         {
             return container.TryGetInstance(requestedType);
+        }
+
+        public IList<T> GetAllInstances<T>()
+        {
+            return container.GetAllInstances<T>();
         }
 
         public bool HasImplementationsFor<T>()

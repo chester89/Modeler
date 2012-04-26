@@ -12,7 +12,7 @@ namespace ViewModel.Tests.Conventions
         {
             base.SetUp();
 
-            Convention = new DefaultCommandConvention();
+            Convention = new DefaultCommandConvention(collectionBuilderMock.Object);
         }
 
         [Test]

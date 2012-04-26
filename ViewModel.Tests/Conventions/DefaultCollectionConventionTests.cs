@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
-using Moq;
 using NUnit.Framework;
 using ViewModel.Conventions;
 using ViewModel.Models;
@@ -26,18 +24,18 @@ namespace ViewModel.Tests.Conventions
 
         private Type CloseCollectionWith<T>()
         {
-            return Convention.OpenGenericTypeForCollection.MakeGenericType(new[] {typeof(T)});
+            return collectionBuilderMock.Object.GetOpenGenericCollectionType().MakeGenericType(new[] {typeof(T)});
         }
 
         private ICollection<T> GetCollectionInstance<T>()
         {
-            return Activator.CreateInstance(CloseCollectionWith<T>(), new [] { collectionRunner }) as ICollection<T>;
+            return Activator.CreateInstance(CloseCollectionWith<T>()/*, new [] { collectionRunner }*/) as ICollection<T>;
         }
 
         public override void SetUp()
         {
             base.SetUp();
-            Convention = new DefaultCollectionConvention();
+            Convention = new DefaultCollectionConvention(collectionBuilderMock.Object);
             collectionRunner = new MockCollectionRunner();
 
             PropertyMock.SetupProperty(m => m.PropertyType, CloseCollectionWith<double>());

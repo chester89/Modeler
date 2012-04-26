@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace ViewModel.IoC
 {
@@ -11,6 +12,7 @@ namespace ViewModel.IoC
         Object GetInstance(Type requestedType);
         T TryGetInstance<T>();
         Object TryGetInstance(Type requestedType);
+        IList<T> GetAllInstances<T>();
         bool HasImplementationsFor<T>();
         bool HasImplementationsFor(Type requestedType);
         void AssertConfigurationIsValid();

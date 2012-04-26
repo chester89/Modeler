@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Moq;
 using NUnit.Framework;
 using ViewModel.Conventions;
@@ -9,7 +11,8 @@ namespace ViewModel.Tests.Conventions
     {
         protected Mock<IPropertyInfo> PropertyMock;
         protected ConventionBase Convention;
-        private string FailureMessage = "IPropertyInfo.Proceed{0} wasn't called while executing impl of " + typeof(IPropertyConvention).FullName + ".OnProperty{0}";
+        private string FailureMessage = "IPropertyInfo.Proceed{0} wasn't called while executing implementation of " + typeof(IPropertyConvention).FullName + ".OnProperty{0}";
+        protected Mock<ICollectionBuilder> collectionBuilderMock;
 
         public IPropertyInfo Property
         {
@@ -23,6 +26,9 @@ namespace ViewModel.Tests.Conventions
 
             var testViewModel = new TestViewModel();
             PropertyMock.Setup(m => m.Instance).Returns(testViewModel);
+            collectionBuilderMock = new Mock<ICollectionBuilder>();
+            collectionBuilderMock.Setup(c => c.GetMinimumCollectionInterface()).Returns(typeof (ICollection<>));
+            collectionBuilderMock.Setup(c => c.GetOpenGenericCollectionType()).Returns(typeof (ObservableCollection<>));
         }
 
         [Test]

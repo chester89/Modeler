@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ViewModel.IoC;
 using ViewModel.Models;
 
 namespace ViewModel.Conventions
 {
     public class ConventionManager
     {
-        List<IPropertyConvention> conventions;
+        IList<IPropertyConvention> conventions;
 
         public ConventionManager()
         {
@@ -22,9 +23,7 @@ namespace ViewModel.Conventions
         {
             conventions.Clear();
 
-            conventions.Add(new DefaultScalarConvention());
-            conventions.Add(new DefaultCollectionConvention());
-            conventions.Add(new DefaultCommandConvention());
+            conventions = IoCContainer.Resolver.GetAllInstances<IPropertyConvention>();
         }
 
         public Boolean IsEmpty 
@@ -42,7 +41,7 @@ namespace ViewModel.Conventions
             {
                 return customConvention;
             }
-            throw new ArgumentException("Convention for requested type was not found. Probable reasons are that you haven't it registered (in case you use custom implementation) or it's Applies() method not functioning properly");
+            throw new ArgumentException("Convention for requested type was not found. Probable reasons are: it Applies() method not functioning properly, or several conventions is applicable and that caused a collision");
         }
     }
 }

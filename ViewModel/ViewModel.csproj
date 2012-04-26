@@ -75,6 +75,7 @@
     <Compile Include="Conventions\DefaultScalarConvention.cs" />
     <Compile Include="Conventions\IScalarPropertyConvention.cs" />
     <Compile Include="Conventions\PostSharpPropertyInfo.cs" />
+    <Compile Include="ICollectionBuilder.cs" />
     <Compile Include="IMessenger.cs" />
     <Compile Include="Infrastructure\IDispatcher.cs" />
     <Compile Include="Infrastructure\IExpressionHandler.cs" />

@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Reflection;
+using ViewModel.IoC;
 using ViewModel.Models;
 
 namespace ViewModel.Conventions
 {
     public class DefaultCollectionConvention : ConventionBase
     {
+        public DefaultCollectionConvention(ICollectionBuilder collectionBuilder) : base(collectionBuilder)
+        {
+        }
+
         private void OnCollectionChanged(IPropertyInfo info, NotifyCollectionChangedEventArgs args)
         {
             if (args.Action == NotifyCollectionChangedAction.Add)
@@ -34,7 +38,7 @@ namespace ViewModel.Conventions
 
             if (genericArguments.Any() && info.PropertyValue == null)
             {
-                info.PropertyValue = IoC.IoCContainer.Resolver.TryGetInstance(MinimumInterfaceForCollection.MakeGenericType(genericArguments));
+                info.PropertyValue = IoCContainer.Resolver.TryGetInstance(collectionBuilder.GetMinimumCollectionInterface().MakeGenericType(genericArguments));
             }
         }
 
@@ -53,8 +57,7 @@ namespace ViewModel.Conventions
         private bool IsCollectionOfDerivedTypeOfViewModel(Type propertyType)
         {
             Type firstGenericArgument = propertyType.GetGenericArguments().First();
-            return propertyType.IsClosedTypeOf(OpenGenericTypeForCollection)
-                   && firstGenericArgument.IsAssignableTo<ViewModelBase>();
+            return propertyType.IsClosedTypeOf(collectionBuilder.GetOpenGenericCollectionType()) && firstGenericArgument.IsAssignableTo<ViewModelBase>();
         }
 
         private IEnumerable<T> ToEnumerableOf<T>(object propertyValue)
@@ -74,7 +77,7 @@ namespace ViewModel.Conventions
 
         protected override bool AppliesCore(PropertyInfo property)
         {
-            return property.PropertyType.IsClosedTypeOf(MinimumInterfaceForCollection);
+            return property.PropertyType.IsClosedTypeOf(collectionBuilder.GetMinimumCollectionInterface());
         }
     }
 }

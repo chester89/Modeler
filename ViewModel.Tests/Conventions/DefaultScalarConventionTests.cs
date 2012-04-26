@@ -14,7 +14,7 @@ namespace ViewModel.Tests.Conventions
         {
             base.SetUp();
 
-            Convention = new DefaultScalarConvention();
+            Convention = new DefaultScalarConvention(collectionBuilderMock.Object);
         }
 
         #endregion
