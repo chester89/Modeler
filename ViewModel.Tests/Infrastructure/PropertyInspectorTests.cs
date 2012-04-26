@@ -9,7 +9,6 @@ using ViewModel.Infrastructure;
 
 namespace ViewModel.Tests.Infrastructure
 {
-    [Ignore("Not ready yet")]
     [TestFixture]
     public class PropertyInspectorTests
     {
@@ -22,11 +21,18 @@ namespace ViewModel.Tests.Infrastructure
         }
 
         [Test]
-        public void ThrowsIfCantHandleExpression()
+        public void PathIsEmptyIfCantHandleExpression()
         {
             Expression<Func<Stream, long>> expression = stream => stream.Seek(20, SeekOrigin.Begin);
+            Assert.AreEqual(string.Empty, inspector.PathFor(expression));
+        }
 
-            Assert.Throws<ArgumentException>(() => inspector.PathFor(expression));
+        [Test]
+        public void CanBuildPathForComplexProperties()
+        {
+            Expression<Func<TestViewModel, int>> expression = t => t.SomeDate.Month;
+            string result = inspector.PathFor(expression);
+            Assert.AreEqual("SomeDate.Month", result);
         }
     }
 }

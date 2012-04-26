@@ -41,7 +41,7 @@ namespace ViewModel.Conventions
             {
                 return customConvention;
             }
-            throw new ArgumentException("Convention for requested type was not found. Probable reasons are: it Applies() method not functioning properly, or several conventions is applicable and that caused a collision");
+            throw new ArgumentException("Convention for requested type was not found. Probable reasons are: it Applies() method not functioning properly, or several conventions is applicable and caused a collision");
         }
     }
 }

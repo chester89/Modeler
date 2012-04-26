@@ -36,7 +36,7 @@ namespace ViewModel.Infrastructure
 
             Expression currentExpression = expression;
 
-            while (currentExpression.NodeType != ExpressionType.Parameter)
+            while (currentExpression.NodeType != ExpressionType.Parameter && currentExpression.NodeType != ExpressionType.Default)
             {
                 var handler = handlers.SingleOrDefault(h => h.CanHandle(currentExpression));
                 if (handler != null)
@@ -50,7 +50,7 @@ namespace ViewModel.Infrastructure
                 }
             }
 
-            return path.Substring(1);
+            return path.Any() ? path.Substring(1): path;
         }
     }
 }

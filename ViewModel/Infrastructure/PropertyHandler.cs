@@ -5,28 +5,28 @@ namespace ViewModel.Infrastructure
 {
     public class PropertyHandler : IExpressionHandler
     {
-        private Expression expression;
+        private Expression expr;
 
         public bool CanHandle(Expression expression)
         {
-            return (expression is MemberExpression || expression is LambdaExpression);
+            return ((expression is MemberExpression || expression is LambdaExpression) && !(expression is MethodCallExpression));
         }
 
-        public string Handle(Expression source, string currentPath, string delimiter)
+        public string Handle(Expression source, string currentPath = "", string delimiter = ".")
         {
             if (source is MemberExpression)
             {
-                expression = source;
+                expr = source;
             }
             else
             {
-                expression = (source as LambdaExpression).Body;
+                expr = (source as LambdaExpression).Body;
             }
 
             string memberName = string.Empty;
-            if (expression is MemberExpression)
+            if (expr is MemberExpression)
             {
-                memberName = (expression as MemberExpression).Member.Name;
+                memberName = (expr as MemberExpression).Member.Name;
             }
 
             return delimiter + memberName + currentPath;
@@ -34,7 +34,11 @@ namespace ViewModel.Infrastructure
 
         public Expression ToNext()
         {
-            return (expression as MemberExpression).Expression;
+            if (expr != null && expr is MemberExpression)
+            {
+                return (expr as MemberExpression).Expression;
+            }
+            return Expression.Empty();
         }
     }
 }

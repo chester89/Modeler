@@ -39,10 +39,17 @@ namespace ViewModel.Tests.Infrastructure
             Expression<Func<TestViewModel, string>> expression = t => t.Message;
 
             //Act
-            string result = handler.Handle(expression, string.Empty, ".");
+            string result = handler.Handle(expression);
 
             //Assert
             Assert.That(result, Is.EqualTo(".Message"));
+        }
+
+        [Test]
+        public void CanHandleComplexProperties()
+        {
+            Expression<Func<TestViewModel, int>> expression = t => t.SomeDate.Month;
+            Assert.IsTrue(handler.CanHandle(expression));
         }
     }
 }
