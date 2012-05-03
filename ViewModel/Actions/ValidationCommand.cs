@@ -12,13 +12,15 @@ namespace ViewModel.Actions
     /// </summary>
     public class ValidationCommand: Command
     {
-        public ValidationCommand(Action<object> execute, Predicate<object> canExecute, ViewModelBase viewModelInstance) : base(execute, canExecute, viewModelInstance)
+        public ValidationCommand(Action<object> execute, Predicate<object> canExecute = null, ViewModelBase viewModelInstance = null) : base(execute, canExecute, viewModelInstance)
         {
         }
 
         protected override bool BeforeCanExecuteHappened()
         {
-            return IoCContainer.Resolver.TryGetInstance<IValidationProvider>().Validate(viewModel).IsModelValid();
+            var validationProvider = IoCContainer.Resolver.TryGetInstance<IValidationProvider>();
+            var isModelValid = validationProvider.Validate(viewModel).IsModelValid();
+            return isModelValid;
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace ViewModel.Infrastructure
 {
-    class PropertyInspector
+    public class PropertyInspector
     {
         private readonly ICollection<IExpressionHandler> handlers = new List<IExpressionHandler>();
 

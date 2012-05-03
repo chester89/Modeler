@@ -79,8 +79,6 @@
     <Compile Include="IoC\IoCContainerTests.cs" />
     <Compile Include="MockDispatcher.cs" />
     <Compile Include="OnCollectionProperty.cs" />
-    <Compile Include="PropertyMapping\PropertyMappingConventionBaseTests.cs" />
-    <Compile Include="PropertyMapping\StandardDateTimeMappingConventionTests.cs" />
     <Compile Include="TestUtil\PropertySubscriberTests.cs" />
     <Compile Include="Validation\DataAnnotationsValidationResultTests.cs" />
     <Compile Include="Validation\DataAnnotationValidationProviderTests.cs" />

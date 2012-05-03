@@ -7,7 +7,7 @@ using ViewModel.Models;
 namespace ViewModel.Actions
 {
     /// <summary>
-    /// Provides base class for actions that only queries data and doesn't make any changes
+    /// Provides base class for actions that performs readonly operations on a datasource
     /// </summary>
     public class Query: ActionBase
     {

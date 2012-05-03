@@ -5,6 +5,7 @@ using System.Text;
 
 namespace ViewModel
 {
+
     public interface ICollectionBuilder
     {
         /// <summary>

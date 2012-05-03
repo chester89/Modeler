@@ -36,7 +36,7 @@ namespace ViewModel.Actions
             }
         }
 
-        protected virtual void SubscribeViewModelToCanExecuteChange()
+        protected void SubscribeViewModelToCanExecuteChange()
         {
             viewModel.PropertyChanged += (e, a) =>
                                              {

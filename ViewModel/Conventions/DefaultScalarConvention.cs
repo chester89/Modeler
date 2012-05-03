@@ -4,18 +4,14 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Input;
-using ViewModel.MappingConventions;
 using ViewModel.Models;
 
 namespace ViewModel.Conventions
 {
     public class DefaultScalarConvention: ConventionBase
     {
-        private readonly PropertyMappingManager mappingManager;
-
         public DefaultScalarConvention(ICollectionBuilder collectionBuilder): base(collectionBuilder)
         {
-            mappingManager = new PropertyMappingManager();
         }
 
         public override void SetParent(IPropertyInfo info)
@@ -41,20 +37,6 @@ namespace ViewModel.Conventions
             info.ProceedSet();
             info.Instance.NotifyPropertyChanged(info.PropertyName);
             SetParent(info);
-
-            MapProperty(info);
-        }
-
-        void MapProperty(IPropertyInfo info)
-        {
-            var methodToInvoke = mappingManager.GetType().GetMethod("PropertyMappingFor").MakeGenericMethod(new[] { info.PropertyType });
-
-            dynamic mappingConvention = methodToInvoke.Invoke(mappingManager, new object[] { });
-            if (mappingConvention != null)
-            {
-                info.PropertyValue = mappingConvention.Map(info.PropertyValue);
-                info.ProceedSet();
-            }
         }
 
         protected override bool AppliesCore(PropertyInfo property)

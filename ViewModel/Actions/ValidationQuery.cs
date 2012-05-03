@@ -8,12 +8,11 @@ using ViewModel.Models;
 namespace ViewModel.Actions
 {
     /// <summary>
-    /// Represents operation that validates and then retrieves data to the server
+    /// Represents operation that validates viewModel and, if model is valid, reaches for datasource
     /// </summary>
     public class ValidationQuery: Query
     {
-        public ValidationQuery(Action<object> execute, Predicate<object> canExecute, ViewModelBase viewModelInstance): 
-            base(execute, canExecute, viewModelInstance)
+        public ValidationQuery(Action<object> execute, Predicate<object> canExecute = null, ViewModelBase viewModelInstance = null): base(execute, canExecute, viewModelInstance)
         {
         }
 

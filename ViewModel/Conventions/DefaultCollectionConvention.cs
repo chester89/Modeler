@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -60,17 +59,11 @@ namespace ViewModel.Conventions
             return propertyType.IsClosedTypeOf(collectionBuilder.GetOpenGenericCollectionType()) && firstGenericArgument.IsAssignableTo<ViewModelBase>();
         }
 
-        private IEnumerable<T> ToEnumerableOf<T>(object propertyValue)
-        {
-            var collection = propertyValue as ICollection;
-            return collection.OfType<T>();
-        }
-
         public override void SetParent(IPropertyInfo info)
         {
             if (IsCollectionOfDerivedTypeOfViewModel(info.PropertyType))
             {
-                IEnumerable<ViewModelBase> collection = ToEnumerableOf<ViewModelBase>(info.PropertyValue);
+                var collection = info.PropertyValue.ToEnumerableOf<ViewModelBase>().ToList();
                 collection.Last().SetParent(info.Instance);
             }
         }

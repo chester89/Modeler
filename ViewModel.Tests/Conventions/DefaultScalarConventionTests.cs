@@ -19,6 +19,14 @@ namespace ViewModel.Tests.Conventions
 
         #endregion
 
+        [Test]
+        public virtual void StringPropertyShouldBeHandledWithScalarConvention()
+        {
+            var scalarResult = Convention.Applies<TestViewModel>(vm => vm.Message);
+            //Assert
+            Assert.True(scalarResult);
+        }
+
         public override void OnPropertySetCallsCorrespondingMethodOnParameter()
         {
             const int something = 20;

@@ -28,7 +28,7 @@ namespace ViewModel.Models
         {
             get
             {
-                return new ActionBase(
+                return new ValidationCommand(
                     par =>
                         {
                             if (BarValue.Equals(0))
@@ -40,7 +40,7 @@ namespace ViewModel.Models
                             {
                                 BarState = TaskbarItemProgressState.Error;
                             }
-                        });
+                        }, viewModelInstance: this);
             }
         }
     }

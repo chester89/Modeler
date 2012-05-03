@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
-using System.Windows.Data;
-using System.Windows.Controls;
 using ViewModel.Infrastructure;
 using ViewModel.Models;
 

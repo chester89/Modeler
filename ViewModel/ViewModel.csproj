@@ -67,6 +67,7 @@
     <Compile Include="Actions\Command.cs" />
     <Compile Include="Actions\ExitContext.cs" />
     <Compile Include="Actions\Query.cs" />
+    <Compile Include="CommonExtensions.cs" />
     <Compile Include="ConcurrentObservableCollection.cs" />
     <Compile Include="Conventions\ConventionBase.cs" />
     <Compile Include="Conventions\ConventionManager.cs" />
@@ -89,9 +90,6 @@
     <Compile Include="IoC\StructureMapDependencyConfigurator.cs" />
     <Compile Include="IoC\StructureMapDependencyResolver.cs" />
     <Compile Include="IValidationProvider.cs" />
-    <Compile Include="MappingConventions\PropertyMappingConventionBase.cs" />
-    <Compile Include="MappingConventions\PropertyMappingManager.cs" />
-    <Compile Include="MappingConventions\StandardDateTimeConvention.cs" />
     <Compile Include="Messenger.cs" />
     <Compile Include="Models\ViewModelState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
