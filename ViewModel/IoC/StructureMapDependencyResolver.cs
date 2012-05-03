@@ -1,20 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using StructureMap;
-using StructureMap.Configuration.DSL;
+using ViewModel.IoC.Registries;
 
 namespace ViewModel.IoC
 {
-    public class StructureMapDependencyResolver : IDependencyResolver
+    /// <summary>
+    /// Implementation of <see cref="IDependencyResolver"/> interface using StructureMap
+    /// </summary>
+    class StructureMapDependencyResolver : IDependencyResolver
     {
-        readonly IContainer container = new Container();
-        public StructureMapDependencyResolver(IEnumerable<Registry> registries)
+        readonly IContainer container;
+        public StructureMapDependencyResolver()
         {
-            foreach (var registry in registries)
-            {
-                container.Configure(cfg => cfg.AddRegistry(registry));
-            }
+            container = new Container(new CommonRegistry());
+            Debug.WriteLine(container.WhatDoIHave());
         }
 
         public T GetInstance<T>()

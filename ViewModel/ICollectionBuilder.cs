@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ViewModel.Models;
 
 namespace ViewModel
 {
-
+    /// <summary>
+    /// Provides access to instantiation point of every collection property on <see cref="ViewModelBase"/> subclasses
+    /// </summary>
     public interface ICollectionBuilder
     {
         /// <summary>
@@ -13,12 +16,15 @@ namespace ViewModel
         /// </summary>
         Type GetMinimumCollectionInterface();
         /// <summary>
-        /// Returns open generic type used for collection properties in ViewModel classes
+        /// Returns open generic type used for collection properties in <see cref="ViewModelBase"/> subclasses
         /// </summary>
         /// <returns></returns>
         Type GetOpenGenericCollectionType();
     }
 
+    /// <summary>
+    /// Default implementation of <see cref="ICollectionBuilder"/> interface
+    /// </summary>
     public class CollectionBuilder: ICollectionBuilder
     {
         public Type GetMinimumCollectionInterface()

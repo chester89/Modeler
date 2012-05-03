@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Windows;
 using System.Windows.Input;
 using ViewModel.Aspects;
 using ViewModel.Actions;
@@ -17,7 +16,6 @@ namespace ViewModel.Models
     public abstract class ViewModelBase: INotifyPropertyChanged
     {
         public Boolean IsValidationOn { get; protected set; }
-
         public ViewModelBase Parent { get; protected set; }
         public ViewModelState State { get; protected set; }
         public bool IsSelected { get; protected set; }
@@ -95,14 +93,14 @@ namespace ViewModel.Models
         /// <summary>
         /// Executes <paramref name="action"/> on UI thread
         /// </summary>
-        public void OnUiThread(Action action)
+        public virtual void OnUiThread(Action action)
         {
             RunInUi(action);
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public virtual event PropertyChangedEventHandler PropertyChanged;
 
-        public void NotifyPropertyChanged(string propertyName)
+        public virtual void NotifyPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null && !string.IsNullOrEmpty(propertyName))
             {

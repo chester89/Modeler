@@ -1,5 +1,4 @@
 using System;
-using System.Windows;
 using System.Windows.Input;
 using ViewModel.Aspects;
 using ViewModel.Models;
@@ -70,7 +69,7 @@ namespace ViewModel.Actions
 
         public event EventHandler CanExecuteChanged;
 
-        public void NotifyCanExecuteChanged()
+        public virtual void NotifyCanExecuteChanged()
         {
             if (CanExecuteChanged != null)
             {

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using System.Windows.Shell;
 using System.Windows.Input;
 using ViewModel.Actions;

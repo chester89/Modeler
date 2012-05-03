@@ -18,7 +18,7 @@
 
         private static void SetResolverToDefault()
         {
-            Resolver = new StructureMapDependencyConfigurator().Configure();
+            Resolver = new StructureMapDependencyResolver();
         }
 
         public static void SetResolver(IDependencyResolver resolver)
