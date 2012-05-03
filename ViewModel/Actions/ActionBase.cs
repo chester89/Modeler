@@ -70,12 +70,11 @@ namespace ViewModel.Actions
 
         public event EventHandler CanExecuteChanged;
 
-        public virtual void NotifyCanExecuteChanged()
+        public void NotifyCanExecuteChanged()
         {
             if (CanExecuteChanged != null)
             {
-                viewModel.OnUiThread(() => 
-                    CanExecuteChanged(this, EventArgs.Empty) );
+                viewModel.OnUiThread(() => CanExecuteChanged(this, EventArgs.Empty) );
             }
         }
 

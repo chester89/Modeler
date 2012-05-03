@@ -10,7 +10,7 @@ using ViewModel.IoC;
 namespace ViewModel.Models
 {
     /// <summary>
-    /// Base class for a view model
+    /// Base class for a view model - provides property notification support, basic validation
     /// </summary>
     [NotifyPropertyChangedAspect]
     [DataErrorInfoAspect]
@@ -61,12 +61,12 @@ namespace ViewModel.Models
             }
         }
 
-        public virtual void Select()
+        public void Select()
         {
             IsSelected = true;
         }
 
-        protected virtual void OnParentSet(ViewModelBase newParentValue)
+        private void OnParentSet(ViewModelBase newParentValue)
         {
             if (newParentValue.Equals(this))
             {
@@ -95,14 +95,14 @@ namespace ViewModel.Models
         /// <summary>
         /// Executes <paramref name="action"/> on UI thread
         /// </summary>
-        public virtual void OnUiThread(Action action)
+        public void OnUiThread(Action action)
         {
             RunInUi(action);
         }
 
-        public virtual event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        public virtual void NotifyPropertyChanged(string propertyName)
+        public void NotifyPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null && !string.IsNullOrEmpty(propertyName))
             {
