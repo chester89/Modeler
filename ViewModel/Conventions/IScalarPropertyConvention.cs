@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using PostSharp.Aspects;
 using ViewModel.Models;
 
 namespace ViewModel.Conventions
 {
+    /// <summary>
+    /// Provides access to property data at runtime - it's really just a convenience wrapper around <see cref="LocationInterceptionArgs"/>
+    /// </summary>
     public interface IPropertyInfo
     {
         ViewModelBase Instance { get; }
@@ -18,6 +22,9 @@ namespace ViewModel.Conventions
         void ProceedSet();
     }
 
+    /// <summary>
+    /// Provides access to property extension points
+    /// </summary>
     public interface IPropertyConvention
     {
         bool Applies(Type targetType, string propertyName);

@@ -19,7 +19,7 @@ namespace ViewModel.Models
         {
             get
             {
-                return new Command(par => { TaskbarIconFlushes = !TaskbarIconFlushes; }, viewModelInstance: this);
+                return new Command(par => { TaskbarIconFlushes = !TaskbarIconFlushes; });
             }
         }
 
@@ -39,7 +39,7 @@ namespace ViewModel.Models
                             {
                                 BarState = TaskbarItemProgressState.Error;
                             }
-                        }, viewModelInstance: this);
+                        });
             }
         }
     }

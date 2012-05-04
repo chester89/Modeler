@@ -7,6 +7,9 @@ using ViewModel.Infrastructure;
 
 namespace ViewModel.Conventions
 {
+    /// <summary>
+    /// Provides basic functionality for expanding property workflow
+    /// </summary>
     public abstract class ConventionBase : IPropertyConvention
     {
         protected readonly ICollectionBuilder collectionBuilder;

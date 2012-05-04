@@ -4,7 +4,6 @@ using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using NUnit.Framework;
 using ViewModel.Actions;
 using ViewModel.Models;
@@ -16,7 +15,7 @@ namespace ViewModel.Tests.Actions
     public class CommandTests
     {
         private TestViewModel viewModel;
-        private ICommand command;
+        private ActionBase command;
         private PropertySubscriber<TestViewModel> subscriber;
 
         [SetUp]
@@ -25,7 +24,7 @@ namespace ViewModel.Tests.Actions
             viewModel = new TestViewModel();
             subscriber = new PropertySubscriber<TestViewModel>(viewModel);
 
-            command = new Command(p => {}, viewModelInstance: viewModel);
+            command = new Command(p => {});
         }
 
         [Test]
@@ -59,7 +58,8 @@ namespace ViewModel.Tests.Actions
             command = new Command(p =>
                                       {
                                           throw new EventLogReadingException();
-                                      }, viewModelInstance: viewModel);
+                                      });
+            command.SetViewModel(viewModel);
 
             var events = new List<string>();
 

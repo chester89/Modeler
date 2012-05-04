@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Windows.Input;
+using ViewModel.Actions;
 
 namespace ViewModel.Conventions
 {
@@ -12,6 +13,8 @@ namespace ViewModel.Conventions
         public override void OnPropertyGet(IPropertyInfo info)
         {
             info.ProceedGet();
+            var command = info.PropertyValue as ActionBase;
+            command.SetViewModel(info.Instance);
         }
 
         public override void OnPropertySet(IPropertyInfo info)

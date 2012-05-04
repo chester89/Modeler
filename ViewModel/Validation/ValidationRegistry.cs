@@ -14,8 +14,7 @@ namespace ViewModel.Validation
         {
             Scan(cfg =>
                      {
-                         cfg.AssembliesFromPath(Environment.CurrentDirectory, assembly => 
-                             assembly.FullName.Contains("ViewModel.Tests"));
+                         cfg.AssembliesFromPath(Environment.CurrentDirectory, assembly => assembly.FullName.Contains("ViewModel.Tests"));
                          if (Assembly.GetEntryAssembly() != null)
                          {
                              cfg.Assembly(Assembly.GetEntryAssembly());

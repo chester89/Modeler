@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Moq;
 using NUnit.Framework;
+using ViewModel.Actions;
 using ViewModel.Conventions;
 
 namespace ViewModel.Tests.Conventions
@@ -49,6 +50,7 @@ namespace ViewModel.Tests.Conventions
         {
             //Arrange
             PropertyMock.Setup(x => x.ProceedGet()).Verifiable();
+            PropertyMock.Setup(x => x.PropertyValue).Returns(new Command(p => { }));
 
             //Act
             Convention.OnPropertyGet(Property);

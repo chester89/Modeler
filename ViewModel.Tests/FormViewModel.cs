@@ -1,8 +1,9 @@
 ﻿using System.Windows.Shell;
 using System.Windows.Input;
 using ViewModel.Actions;
+using ViewModel.Models;
 
-namespace ViewModel.Models
+namespace ViewModel.Tests
 {
     public class FormViewModel: ViewModelBase
     {
@@ -16,7 +17,7 @@ namespace ViewModel.Models
         {
             get
             {
-                var command = new Command(par => { TaskbarIconFlushes = !TaskbarIconFlushes; }, viewModelInstance: this);
+                var command = new Command(par => { TaskbarIconFlushes = !TaskbarIconFlushes; });
                 return command;
             }
         }
@@ -25,7 +26,7 @@ namespace ViewModel.Models
         {
             get
             {
-                return new ActionBase(
+                return new ValidationCommand(
                     par =>
                         {
                             if (BarValue.Equals(0))

@@ -11,9 +11,9 @@ namespace ViewModel.Actions
     /// </summary>
     public class Query: ActionBase
     {
-        public Query(Action<object> execute, Predicate<object> canExecute = null, ViewModelBase viewModelInstance = null) : base(execute, canExecute)
+        public Query(Action<object> execute, Predicate<object> canExecute = null) : base(execute, canExecute)
         {
-            SetViewModel(viewModelInstance);
+            
         }
 
         protected override void OnExecuteEntry()

@@ -12,7 +12,7 @@ namespace ViewModel.Actions
     /// </summary>
     public class ValidationQuery: Query
     {
-        public ValidationQuery(Action<object> execute, Predicate<object> canExecute = null, ViewModelBase viewModelInstance = null): base(execute, canExecute, viewModelInstance)
+        public ValidationQuery(Action<object> execute, Predicate<object> canExecute = null): base(execute, canExecute)
         {
         }
 

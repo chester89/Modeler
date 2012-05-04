@@ -36,5 +36,18 @@ namespace ViewModel.TestUtil
                                                  }
                                              };
         }
+
+        public void SubscribeTo<TProperty>(Expression<Func<T, TProperty>> vmExpression, Action<TProperty> action)
+        {
+            string propertyName = new PropertyInspector().PathFor(vmExpression);
+            viewModel.PropertyChanged += (e, a) =>
+            {
+                if (a.PropertyName == propertyName)
+                {
+                    var newPropertyValue = vmExpression.Compile()(viewModel);
+                    action(newPropertyValue);
+                }
+            };
+        }
     }
 }

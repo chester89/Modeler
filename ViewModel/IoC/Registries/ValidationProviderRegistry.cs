@@ -7,7 +7,6 @@ using ViewModel.Validation;
 
 namespace ViewModel.IoC.Registries
 {
-    //[Export(typeof(Registry))]
     public class ValidationProviderRegistry: Registry
     {
         public ValidationProviderRegistry()

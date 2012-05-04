@@ -17,7 +17,7 @@ namespace ViewModel.Tests.Actions
     {
         private const string loading = "Loading";
         private FormViewModel viewModel;
-        private ICommand command;
+        private ActionBase command;
         private PropertySubscriber<FormViewModel> subscriber;
         protected string faulted = "Faulted";
 
@@ -31,7 +31,8 @@ namespace ViewModel.Tests.Actions
         [Test]
         public void IfNoExceptionsOccurThenShouldSetViewModelStateToLoadingThenToStill()
         {
-            command = new Query(p => { }, viewModelInstance: viewModel);
+            command = new Query(p => { });
+            command.SetViewModel(viewModel);
             var events = new List<string>();
 
             const string still = "BackToStill";
@@ -58,7 +59,8 @@ namespace ViewModel.Tests.Actions
         [Test]
         public void IfExceptionsOccuredThenShouldSetViewModelStateToLoadingThenToFaulted()
         {
-            command = new Query(p => { throw new EventLogReadingException(); }, viewModelInstance: viewModel);
+            command = new Query(p => { throw new EventLogReadingException(); });
+            command.SetViewModel(viewModel);
 
             var events = new List<string>();
 

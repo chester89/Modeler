@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 using ViewModel.Actions;
-using ViewModel.Models;
 
 namespace ViewModel.Tests.Actions
 {
@@ -17,7 +16,8 @@ namespace ViewModel.Tests.Actions
         public void SetUp()
         {
             formViewModel = new FormViewModel();
-            command = new ValidationQuery(null, null, formViewModel);
+            command = new ValidationQuery(null);
+            command.SetViewModel(formViewModel);
         }
 
         [Test]

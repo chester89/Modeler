@@ -22,16 +22,16 @@ namespace ViewModel.Actions
             LastCanExecuteChangedValue = null;
         }
 
-        public void SetViewModel(ViewModelBase viewModel)
+        public void SetViewModel(ViewModelBase viewModelInstance)
         {
-            if (viewModel != null)
+            if (viewModelInstance != null)
             {
-                this.viewModel = viewModel;
+                viewModel = viewModelInstance;
                 SubscribeViewModelToCanExecuteChange();
             }
             else
             {
-                throw new ArgumentException("viewModel parameter should not be null");
+                throw new ArgumentException("viewModelInstance parameter should not be null");
             }
         }
 

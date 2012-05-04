@@ -16,7 +16,6 @@ namespace ViewModel.IoC
         public StructureMapDependencyResolver()
         {
             container = new Container(new CommonRegistry());
-            Debug.WriteLine(container.WhatDoIHave());
         }
 
         public T GetInstance<T>()
