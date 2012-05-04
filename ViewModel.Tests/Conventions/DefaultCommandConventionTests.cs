@@ -38,7 +38,7 @@ namespace ViewModel.Tests.Conventions
         }
 
         [Test]
-        public void OnPropertySet_AssignesViewModel()
+        public void OnPropertyGetGetsPropertyValueThenAssignsViewModel()
         {
             Action<Object> emptyExecute = p => {};
             Predicate<Object> emptyCanExecute = t => true;
@@ -47,11 +47,13 @@ namespace ViewModel.Tests.Conventions
             var viewModelMock = new Mock<ViewModelBase>() { CallBase = true };
 
             commandMock.Setup(m => m.SetViewModel(viewModelMock.Object)).Verifiable("SetViewModel wasn't called!");
-            propertyMock.Setup(p => p.PropertyValue).Returns(commandMock.Object).Verifiable("hey!");
-            propertyMock.Setup(p => p.Instance).Returns(viewModelMock.Object).Verifiable("hey!!!");
+            propertyMock.Setup(p => p.PropertyValue).Returns(commandMock.Object);
+            propertyMock.Setup(p => p.Instance).Returns(viewModelMock.Object);
+            propertyMock.Setup(p => p.ProceedGet()).Verifiable("ProceedGet wasn't called");
                 
             Convention.OnPropertyGet(propertyMock.Object);
             commandMock.Verify(c => c.SetViewModel(viewModelMock.Object), Times.Once());
+            propertyMock.Verify(m => m.ProceedGet(), Times.Once());
         }
 
         [Test]
