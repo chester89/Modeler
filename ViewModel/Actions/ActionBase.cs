@@ -22,7 +22,7 @@ namespace ViewModel.Actions
             LastCanExecuteChangedValue = null;
         }
 
-        public void SetViewModel(ViewModelBase viewModelInstance)
+        public virtual void SetViewModel(ViewModelBase viewModelInstance)
         {
             if (viewModelInstance != null)
             {

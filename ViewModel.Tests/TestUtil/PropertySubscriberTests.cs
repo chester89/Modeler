@@ -22,5 +22,18 @@ namespace ViewModel.Tests.TestUtil
                                                        });
             Assert.Throws<InvalidCastException>(() => vm.Message = "Hello man!");
         }
+
+        [Test]
+        public void SubscribesWithPropValue_ToViewModelProperty()
+        {
+            var vm = new TestViewModel();
+            var subscriber = SubscriberExtensions.CreateSubscriber(vm);
+
+            subscriber.SubscribeTo(x => x.Message, propVal =>
+            {
+                throw new InvalidCastException();
+            });
+            Assert.Throws<InvalidCastException>(() => vm.Message = "Hello man!");
+        }
     }
 }

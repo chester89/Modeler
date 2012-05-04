@@ -1,6 +1,7 @@
 ﻿using System;
 using Moq;
 using NUnit.Framework;
+using ViewModel.Actions;
 using ViewModel.Conventions;
 using ViewModel.Models;
 
@@ -37,6 +38,23 @@ namespace ViewModel.Tests.Conventions
         }
 
         [Test]
+        public void OnPropertySet_AssignesViewModel()
+        {
+            Action<Object> emptyExecute = p => {};
+            Predicate<Object> emptyCanExecute = t => true;
+            var commandMock = new Mock<Command>(new object[] { emptyExecute, emptyCanExecute });
+            var propertyMock = new Mock<IPropertyInfo>();
+            var viewModelMock = new Mock<ViewModelBase>() { CallBase = true };
+
+            commandMock.Setup(m => m.SetViewModel(viewModelMock.Object)).Verifiable("SetViewModel wasn't called!");
+            propertyMock.Setup(p => p.PropertyValue).Returns(commandMock.Object).Verifiable("hey!");
+            propertyMock.Setup(p => p.Instance).Returns(viewModelMock.Object).Verifiable("hey!!!");
+                
+            Convention.OnPropertyGet(propertyMock.Object);
+            commandMock.Verify(c => c.SetViewModel(viewModelMock.Object), Times.Once());
+        }
+
+        [Test]
         public void OnPropertySetDoesntInvokePropertyChanged()
         {
             //Arrange
@@ -50,10 +68,7 @@ namespace ViewModel.Tests.Conventions
 
             //Assert
             const string failureMessage = "Notification about property changed shouldn't happen but it did";
-            Assert.DoesNotThrow(() =>
-                                    {
-                                        PropertyMock.Verify(m => m.Instance.NotifyPropertyChanged(Property.PropertyName), Times.Never(), failureMessage);
-                                    });
+            Assert.DoesNotThrow(() => PropertyMock.Verify(m => m.Instance.NotifyPropertyChanged(Property.PropertyName), Times.Never(), failureMessage));
         }
     }
 }
