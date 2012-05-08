@@ -16,7 +16,7 @@
 		<dependencies>
 			<dependency id="FluentValidation" />
 			<dependency id="PostSharp" />
-			<dependency id="StructureMap />
+			<dependency id="StructureMap" />
 		</dependencies>
 	</metadata>
 </package>
