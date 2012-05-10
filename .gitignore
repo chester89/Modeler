@@ -11,6 +11,9 @@ _ReSharper.*
 *.suo
 *.cache
 *.swp
+*.nupkg
+*.exe
+packaging/lib
 
 !packages/PostSharp*/
 !packages/PostSharp*/tools/
