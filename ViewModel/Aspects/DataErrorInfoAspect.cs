@@ -34,7 +34,7 @@ namespace ViewModeler.Aspects
             var viewModel = Instance as ViewModelBase;
             if(viewModel.IsValidationOn)
             {
-                var errors = validationProvider.Validate(viewModel).GetErrorsForProperty(propertyName).ToList();
+                var errors = validationProvider.Validate(viewModel).GetErrorsForProperty(propertyName).ToArray();
                 if (errors.Any())
                 {
                     return string.Join(", ", errors);

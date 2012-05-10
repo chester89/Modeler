@@ -13,11 +13,7 @@ namespace ViewModeler.Infrastructure
 
         public PropertyInspector()
         {
-            ScanForImplementationsOf<IExpressionHandler>().ToList().ForEach(type =>
-                                                                            {
-                                                                                dynamic instance = Activator.CreateInstance(type);
-                                                                                handlers.Add(instance);
-                                                                            });
+            ScanForImplementationsOf<IExpressionHandler>().ToList().ForEach(type => handlers.Add(Activator.CreateInstance(type) as IExpressionHandler));
         }
 
         /// <summary>

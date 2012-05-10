@@ -18,3 +18,4 @@ packaging/lib
 !packages/PostSharp*/
 !packages/PostSharp*/tools/
 !packages/PostSharp*/tools/PostSharp.targets
+!packages/PostSharp*/tools/PostSharp.tasks
