@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ViewModel
+namespace ViewModeler
 {
     public static class CommonExtensions
     {

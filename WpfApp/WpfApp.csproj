@@ -111,9 +111,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
+    <ProjectReference Include="..\ViewModel\ViewModeler.csproj">
       <Project>{E73D7B6B-5BA0-430A-9CB9-C810122F1FAA}</Project>
-      <Name>ViewModel</Name>
+      <Name>ViewModeler</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

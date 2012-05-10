@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ViewModel.Validation
+namespace ViewModeler.Validation
 {
     public class DataAnnotationValidationResult : IValidationResult
     {

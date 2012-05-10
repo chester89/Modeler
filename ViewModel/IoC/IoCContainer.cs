@@ -1,4 +1,4 @@
-﻿namespace ViewModel.IoC
+﻿namespace ViewModeler.IoC
 {
     /// <summary>
     /// Provides access to Inversion of Control

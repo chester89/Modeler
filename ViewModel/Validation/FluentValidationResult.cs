@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using FluentValidation.Results;
 
-namespace ViewModel.Validation
+namespace ViewModeler.Validation
 {
     public class FluentValidationResult : IValidationResult
     {

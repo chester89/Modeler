@@ -1,10 +1,10 @@
 ﻿using System;
 using Moq;
 using NUnit.Framework;
-using ViewModel.Conventions;
-using ViewModel.Models;
+using ViewModeler.Conventions;
+using ViewModeler.Models;
 
-namespace ViewModel.Tests.Conventions
+namespace ViewModeler.Tests.Conventions
 {
     public class DefaultScalarConventionTests : BaseConventionTest
     {

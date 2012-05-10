@@ -4,9 +4,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Input;
-using ViewModel.Models;
+using ViewModeler.Models;
 
-namespace ViewModel.Conventions
+namespace ViewModeler.Conventions
 {
     public class DefaultScalarConvention: ConventionBase
     {

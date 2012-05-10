@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 	<metadata>
 		<id>ViewModeler</id>
-		<version>0.5.0.20</version>
+		<version>0.5.0.23</version>
 		<title>ViewModeler</title>
 		<authors>Gleb Chermennov</authors>
 		<owners>Gleb Chermennov</owners>

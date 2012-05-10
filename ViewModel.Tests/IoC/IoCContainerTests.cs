@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using ViewModel.IoC;
-using ViewModel.Validation;
+using ViewModeler.IoC;
+using ViewModeler.Validation;
 
-namespace ViewModel.Tests.IoC
+namespace ViewModeler.Tests.IoC
 {
     [TestFixture]
     public class IoCContainerTests

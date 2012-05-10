@@ -1,7 +1,7 @@
 using System;
 using System.Linq.Expressions;
 
-namespace ViewModel.Infrastructure
+namespace ViewModeler.Infrastructure
 {
     public class PropertyHandler : IExpressionHandler
     {

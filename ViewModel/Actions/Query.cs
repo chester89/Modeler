@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ViewModel.Models;
+using ViewModeler.Models;
 
-namespace ViewModel.Actions
+namespace ViewModeler.Actions
 {
     /// <summary>
     /// Provides base class for actions that performs readonly operations on a datasource

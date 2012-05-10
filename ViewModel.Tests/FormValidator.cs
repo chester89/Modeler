@@ -1,8 +1,6 @@
 ﻿using FluentValidation;
-using ViewModel.Models;
-using ViewModel.Tests;
 
-namespace ViewModel
+namespace ViewModeler.Tests
 {
     public class FormValidator: AbstractValidator<FormViewModel>
     {

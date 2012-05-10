@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Reflection;
-using ViewModel.IoC;
-using ViewModel.Models;
+using ViewModeler.IoC;
+using ViewModeler.Models;
 
-namespace ViewModel.Conventions
+namespace ViewModeler.Conventions
 {
     public class DefaultCollectionConvention : ConventionBase
     {

@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModel.Tests", "ViewModel.Tests\ViewModel.Tests.csproj", "{8D1AA229-84AD-4DB5-B9D1-CBBBF0BD3270}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModeler.Tests", "ViewModel.Tests\ViewModeler.Tests.csproj", "{8D1AA229-84AD-4DB5-B9D1-CBBBF0BD3270}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModel", "ViewModel\ViewModel.csproj", "{E73D7B6B-5BA0-430A-9CB9-C810122F1FAA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModeler", "ViewModel\ViewModeler.csproj", "{E73D7B6B-5BA0-430A-9CB9-C810122F1FAA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp", "WpfApp\WpfApp.csproj", "{775E3F09-CFE9-4261-9561-6301DFF0BE15}"
 EndProject

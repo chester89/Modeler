@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
 
-namespace ViewModel.Infrastructure
+namespace ViewModeler.Infrastructure
 {
     interface IExpressionHandler
     {

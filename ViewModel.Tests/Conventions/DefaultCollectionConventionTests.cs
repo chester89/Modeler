@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using NUnit.Framework;
-using ViewModel.Conventions;
-using ViewModel.Models;
+using ViewModeler.Conventions;
+using ViewModeler.Models;
 
-namespace ViewModel.Tests.Conventions
+namespace ViewModeler.Tests.Conventions
 {
     class MockCollectionRunner : ICollectionRunner
     {

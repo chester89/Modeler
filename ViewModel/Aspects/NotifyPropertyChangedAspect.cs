@@ -3,10 +3,10 @@ using System.Linq;
 using PostSharp.Aspects;
 using PostSharp.Aspects.Advices;
 using PostSharp.Extensibility;
-using ViewModel.Conventions;
-using ViewModel.Models;
+using ViewModeler.Conventions;
+using ViewModeler.Models;
 
-namespace ViewModel.Aspects
+namespace ViewModeler.Aspects
 {
     [Serializable]
     [MulticastAttributeUsage(MulticastTargets.Class, Inheritance = MulticastInheritance.Strict)]

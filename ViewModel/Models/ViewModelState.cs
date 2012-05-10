@@ -1,4 +1,4 @@
-namespace ViewModel.Models
+namespace ViewModeler.Models
 {
     /// <summary>
     /// Represents the state of the view model

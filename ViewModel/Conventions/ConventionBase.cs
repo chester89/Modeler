@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using ViewModel.Infrastructure;
+using ViewModeler.Infrastructure;
 
-namespace ViewModel.Conventions
+namespace ViewModeler.Conventions
 {
     /// <summary>
     /// Provides basic functionality for expanding property workflow

@@ -6,11 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using NUnit.Framework;
-using ViewModel.Actions;
-using ViewModel.Models;
-using ViewModel.TestUtil;
+using ViewModeler.Actions;
+using ViewModeler.Models;
+using ViewModeler.TestUtil;
 
-namespace ViewModel.Tests.Actions
+namespace ViewModeler.Tests.Actions
 {
     [TestFixture]
     public class QueryTests

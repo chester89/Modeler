@@ -1,12 +1,12 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Input;
-using ViewModel.Aspects;
-using ViewModel.Actions;
-using ViewModel.Infrastructure;
-using ViewModel.IoC;
+using ViewModeler.Aspects;
+using ViewModeler.Actions;
+using ViewModeler.Infrastructure;
+using ViewModeler.IoC;
 
-namespace ViewModel.Models
+namespace ViewModeler.Models
 {
     /// <summary>
     /// Base class for a view model - provides property notification support, basic validation

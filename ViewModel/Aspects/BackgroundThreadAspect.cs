@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using PostSharp.Aspects;
 
-namespace ViewModel.Aspects
+namespace ViewModeler.Aspects
 {
     [Serializable]
     public sealed class BackgroundThreadAspect: MethodInterceptionAspect

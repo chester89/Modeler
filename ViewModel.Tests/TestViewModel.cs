@@ -1,10 +1,10 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using ViewModel.Actions;
-using ViewModel.Models;
+using ViewModeler.Actions;
+using ViewModeler.Models;
 
-namespace ViewModel.Tests
+namespace ViewModeler.Tests
 {
     public class TestViewModel : ViewModelBase
     {

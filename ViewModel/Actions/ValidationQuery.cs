@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ViewModel.IoC;
-using ViewModel.Models;
+using ViewModeler.IoC;
+using ViewModeler.Models;
 
-namespace ViewModel.Actions
+namespace ViewModeler.Actions
 {
     /// <summary>
     /// Represents operation that validates viewModel and, if model is valid, reaches for datasource

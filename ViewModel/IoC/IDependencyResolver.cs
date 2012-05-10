@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ViewModel.IoC
+namespace ViewModeler.IoC
 {
     /// <summary>
     /// Provides a contract for using your IoC framework of choice

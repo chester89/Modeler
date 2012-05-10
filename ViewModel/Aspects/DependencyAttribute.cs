@@ -5,9 +5,9 @@ using System.Text;
 using PostSharp.Aspects;
 using PostSharp.Extensibility;
 using PostSharp.Reflection;
-using ViewModel.IoC;
+using ViewModeler.IoC;
 
-namespace ViewModel.Aspects
+namespace ViewModeler.Aspects
 {
     [Serializable]
     public class DependencyAttribute: LocationInterceptionAspect

@@ -2,9 +2,10 @@
 using System.Collections.ObjectModel;
 using System.Windows.Shell;
 using System.Windows.Input;
-using ViewModel.Actions;
+using ViewModeler.Actions;
+using ViewModeler.Models;
 
-namespace ViewModel.Models
+namespace WpfApp
 {
     public class FormViewModel: ViewModelBase
     {

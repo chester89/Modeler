@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Linq;
 using FluentValidation;
-using ViewModel.Models;
 
-namespace WpfPostSharpTesting
+namespace WpfApp
 {
     public class FormValidator: AbstractValidator<FormViewModel>
     {

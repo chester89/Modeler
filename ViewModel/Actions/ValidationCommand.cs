@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ViewModel.IoC;
-using ViewModel.Models;
+using ViewModeler.IoC;
+using ViewModeler.Models;
 
-namespace ViewModel.Actions
+namespace ViewModeler.Actions
 {
     /// <summary>
     /// Represents operation that validates and then pushes data to the server

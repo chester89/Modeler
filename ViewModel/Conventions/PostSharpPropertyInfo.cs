@@ -1,8 +1,8 @@
 ﻿using System;
 using PostSharp.Aspects;
-using ViewModel.Models;
+using ViewModeler.Models;
 
-namespace ViewModel.Conventions
+namespace ViewModeler.Conventions
 {
     class PostSharpPropertyInfo : IPropertyInfo
     {

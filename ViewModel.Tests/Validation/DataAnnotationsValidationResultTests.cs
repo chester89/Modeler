@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using ViewModel.Validation;
+using ViewModeler.Validation;
 
-namespace ViewModel.Tests.Validation
+namespace ViewModeler.Tests.Validation
 {
     [TestFixture]
     public class DataAnnotationsValidationResultTests

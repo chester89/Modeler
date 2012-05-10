@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using StructureMap.Configuration.DSL;
-using ViewModel.Actions;
-using ViewModel.Conventions;
+using ViewModeler.Actions;
+using ViewModeler.Conventions;
 
-namespace ViewModel.IoC.Registries
+namespace ViewModeler.IoC.Registries
 {
     public class CommonRegistry: Registry
     {

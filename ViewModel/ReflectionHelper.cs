@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ViewModel
+namespace ViewModeler
 {
-    public static class ReflectionHelper
+    static class ReflectionHelper
     {
         /// <summary>
         /// Determines whether <paramref name="closedType"/> is closed type of <paramref name="genericType"/>, like IEnumerable of int is closed type of IEnumerable of T

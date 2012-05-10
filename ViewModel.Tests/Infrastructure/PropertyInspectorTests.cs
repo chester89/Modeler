@@ -5,9 +5,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using NUnit.Framework;
-using ViewModel.Infrastructure;
+using ViewModeler.Infrastructure;
 
-namespace ViewModel.Tests.Infrastructure
+namespace ViewModeler.Tests.Infrastructure
 {
     [TestFixture]
     public class PropertyInspectorTests

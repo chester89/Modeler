@@ -6,15 +6,16 @@ using System.Text;
 using FluentValidation;
 using StructureMap.Configuration.DSL;
 
-namespace ViewModel.Validation
+namespace ViewModeler.Validation
 {
     public class ValidationRegistry : Registry
     {
         public ValidationRegistry()
         {
+            string assemblyName = GetType().Assembly.GetName().Name;
             Scan(cfg =>
                      {
-                         cfg.AssembliesFromPath(Environment.CurrentDirectory, assembly => assembly.FullName.Contains("ViewModel.Tests"));
+                         cfg.AssembliesFromPath(Environment.CurrentDirectory, assembly => assembly.FullName.Contains(string.Format("{0}.Tests", assemblyName)));
                          if (Assembly.GetEntryAssembly() != null)
                          {
                              cfg.Assembly(Assembly.GetEntryAssembly());

@@ -4,10 +4,10 @@ using System.Linq;
 using PostSharp.Aspects;
 using PostSharp.Aspects.Advices;
 using PostSharp.Extensibility;
-using ViewModel.IoC;
-using ViewModel.Models;
+using ViewModeler.IoC;
+using ViewModeler.Models;
 
-namespace ViewModel.Aspects
+namespace ViewModeler.Aspects
 {
     [Serializable]
     [IntroduceInterface(typeof(IDataErrorInfo), OverrideAction = InterfaceOverrideAction.Ignore)]

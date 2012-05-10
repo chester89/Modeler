@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using FluentValidation.Results;
 using NUnit.Framework;
-using ViewModel.Validation;
+using ViewModeler.Validation;
 
-namespace ViewModel.Tests.Validation
+namespace ViewModeler.Tests.Validation
 {
     [TestFixture]
     public class FluentValidationResultTests

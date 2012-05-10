@@ -1,7 +1,7 @@
 ﻿using System;
-using ViewModel.Infrastructure;
+using ViewModeler.Infrastructure;
 
-namespace ViewModel.Tests
+namespace ViewModeler.Tests
 {
     public class MockDispatcher: IDispatcher
     {

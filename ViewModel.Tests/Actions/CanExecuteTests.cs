@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 
-namespace ViewModel.Tests.Actions
+namespace ViewModeler.Tests.Actions
 {
     [Description("Tests CanExecute capabilities")]
     [TestFixture]

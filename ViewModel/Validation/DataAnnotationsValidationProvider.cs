@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
-namespace ViewModel.Validation
+namespace ViewModeler.Validation
 {
     public class DataAnnotationsValidationProvider: IValidationProvider
     {

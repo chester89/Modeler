@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using StructureMap;
-using ViewModel.IoC.Registries;
+using ViewModeler.IoC.Registries;
 
-namespace ViewModel.IoC
+namespace ViewModeler.IoC
 {
     /// <summary>
     /// Implementation of <see cref="IDependencyResolver"/> interface using StructureMap

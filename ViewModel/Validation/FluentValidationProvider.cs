@@ -5,7 +5,7 @@ using System.Text;
 using FluentValidation;
 using StructureMap;
 
-namespace ViewModel.Validation
+namespace ViewModeler.Validation
 {
     public class FluentValidationProvider: IValidationProvider
     {

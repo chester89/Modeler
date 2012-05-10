@@ -1,11 +1,11 @@
 ﻿using System;
 using Moq;
 using NUnit.Framework;
-using ViewModel.Actions;
-using ViewModel.Conventions;
-using ViewModel.Models;
+using ViewModeler.Actions;
+using ViewModeler.Conventions;
+using ViewModeler.Models;
 
-namespace ViewModel.Tests.Conventions
+namespace ViewModeler.Tests.Conventions
 {
     public class DefaultCommandConventionTests : BaseConventionTest
     {
