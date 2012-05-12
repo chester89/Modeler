@@ -43,15 +43,15 @@ namespace ViewModeler.IoC
             return container.GetAllInstances<T>();
         }
 
-        public bool HasImplementationsFor<T>()
-        {
-            return container.Model.HasImplementationsFor<T>();
-        }
+        //public bool HasImplementationsFor<T>()
+        //{
+        //    return container.Model.HasImplementationsFor<T>();
+        //}
 
-        public bool HasImplementationsFor(Type requestedType)
-        {
-            return container.Model.HasImplementationsFor(requestedType);
-        }
+        //public bool HasImplementationsFor(Type requestedType)
+        //{
+        //    return container.Model.HasImplementationsFor(requestedType);
+        //}
 
         public void AssertConfigurationIsValid()
         {

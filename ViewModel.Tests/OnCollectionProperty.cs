@@ -13,8 +13,8 @@ namespace ViewModeler.Tests
         public void DefaultRuntimeCollectionTypeIsCollectionClosedTypeConfigured()
         {
             var vm = new TestViewModel();
-            var a = vm.List;
-            var propertyRuntimeType = vm.GetType().GetProperty("List").GetValue(vm, null).GetType();
+            var a = vm.Something;
+            var propertyRuntimeType = vm.GetType().GetProperty("Something").GetValue(vm, null).GetType();
             Assert.True(propertyRuntimeType.IsClosedTypeOf(typeof(ConcurrentObservableCollection<>)));
         }
     }

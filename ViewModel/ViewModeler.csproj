@@ -61,7 +61,6 @@
     <Compile Include="Actions\ValidationQuery.cs" />
     <Compile Include="Aspects\BackgroundThreadAspect.cs" />
     <Compile Include="Aspects\DataErrorInfoAspect.cs" />
-    <Compile Include="Aspects\DependencyAttribute.cs" />
     <Compile Include="Aspects\NotifyPropertyChangedAspect.cs" />
     <Compile Include="Actions\Command.cs" />
     <Compile Include="Actions\ExitContext.cs" />

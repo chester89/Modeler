@@ -35,9 +35,9 @@ namespace ViewModeler.Conventions
         {
             Type[] genericArguments = info.PropertyType.GetGenericArguments();
 
-            if (genericArguments.Any() && info.PropertyValue == null)
+            if (genericArguments.Any() && info.PropertyValue == null && info.PropertyType.IsClosedTypeOf(collectionBuilder.GetMinimumCollectionInterface()))
             {
-                info.PropertyValue = IoCContainer.Resolver.TryGetInstance(collectionBuilder.GetMinimumCollectionInterface().MakeGenericType(genericArguments));
+                info.PropertyValue = IoCContainer.Resolver.GetInstance(collectionBuilder.GetMinimumCollectionInterface().MakeGenericType(genericArguments));
             }
         }
 

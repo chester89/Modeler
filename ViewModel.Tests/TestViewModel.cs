@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using ViewModeler.Actions;
@@ -12,6 +13,7 @@ namespace ViewModeler.Tests
         public string Message { get; set; }
         public Double Value { get; set; }
         public ObservableCollection<int> List { get; set; }
+        public ICollection<double> Something { get; set; }
         public ICommand Edit { get; set; }
         public DateTime SomeDate { get; set; }
         public ICommand ForProperties 

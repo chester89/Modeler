@@ -13,8 +13,8 @@ namespace ViewModeler.IoC
         T TryGetInstance<T>();
         Object TryGetInstance(Type requestedType);
         IList<T> GetAllInstances<T>();
-        bool HasImplementationsFor<T>();
-        bool HasImplementationsFor(Type requestedType);
+        //bool HasImplementationsFor<T>();
+        //bool HasImplementationsFor(Type requestedType);
         void AssertConfigurationIsValid();
     }
 }
