@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using ViewModel.Actions;
+using ViewModeler.Actions;
 
-namespace ViewModel.Tests.Actions
+namespace ViewModeler.Tests.Actions
 {
     public class ValidationQueryTests: QueryTests
     {

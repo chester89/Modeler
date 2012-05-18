@@ -1,8 +1,9 @@
 ﻿using System.Reflection;
 using System.Windows.Input;
-using ViewModel.Actions;
+using ViewModeler;
+using ViewModeler.Actions;
 
-namespace ViewModel.Conventions
+namespace ViewModeler.Conventions
 {
     public class DefaultCommandConvention: ConventionBase
     {

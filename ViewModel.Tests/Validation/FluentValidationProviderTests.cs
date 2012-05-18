@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
-using ViewModel.Models;
-using ViewModel.Validation;
+using ViewModeler.Models;
+using ViewModeler.Validation;
 
-namespace ViewModel.Tests.Validation
+namespace ViewModeler.Tests.Validation
 {
     [TestFixture]
     public class FluentValidationProviderTests

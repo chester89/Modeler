@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ViewModel.IoC
+namespace ViewModeler.IoC
 {
     /// <summary>
     /// Provides a contract for using your IoC framework of choice
@@ -13,8 +13,8 @@ namespace ViewModel.IoC
         T TryGetInstance<T>();
         Object TryGetInstance(Type requestedType);
         IList<T> GetAllInstances<T>();
-        bool HasImplementationsFor<T>();
-        bool HasImplementationsFor(Type requestedType);
+        //bool HasImplementationsFor<T>();
+        //bool HasImplementationsFor(Type requestedType);
         void AssertConfigurationIsValid();
     }
 }

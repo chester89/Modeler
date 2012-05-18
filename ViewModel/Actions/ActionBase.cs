@@ -1,9 +1,9 @@
 using System;
 using System.Windows.Input;
-using ViewModel.Aspects;
-using ViewModel.Models;
+using ViewModeler.Aspects;
+using ViewModeler.Models;
 
-namespace ViewModel.Actions
+namespace ViewModeler.Actions
 {
     /// <summary>
     /// Provides basic implementation of <see cref="ICommand"/> interface

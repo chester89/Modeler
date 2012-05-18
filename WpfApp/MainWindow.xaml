@@ -40,9 +40,9 @@
         <!--<Style TargetType="{x:Type DatePicker}" BasedOn="{StaticResource derived}" />-->
     </Window.Resources>
 
-    <Window.TaskbarItemInfo>
+    <!--<Window.TaskbarItemInfo>
         <TaskbarItemInfo x:Name="taskbar" ProgressValue="{Binding BarValue}" ProgressState="{Binding BarState}" />
-    </Window.TaskbarItemInfo>
+    </Window.TaskbarItemInfo>-->
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />

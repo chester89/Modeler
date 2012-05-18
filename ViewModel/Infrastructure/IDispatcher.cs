@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Threading;
 
-namespace ViewModel.Infrastructure
+namespace ViewModeler.Infrastructure
 {
     /// <summary>
     /// Provides abstraction over <see cref="Dispatcher"/>

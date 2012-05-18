@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace ViewModel.Infrastructure
+namespace ViewModeler.Infrastructure
 {
     public class PropertyInspector
     {
@@ -13,11 +13,7 @@ namespace ViewModel.Infrastructure
 
         public PropertyInspector()
         {
-            ScanForImplementationsOf<IExpressionHandler>().ToList().ForEach(type =>
-                                                                            {
-                                                                                dynamic instance = Activator.CreateInstance(type);
-                                                                                handlers.Add(instance);
-                                                                            });
+            ScanForImplementationsOf<IExpressionHandler>().ToList().ForEach(type => handlers.Add(Activator.CreateInstance(type) as IExpressionHandler));
         }
 
         /// <summary>
@@ -36,7 +32,7 @@ namespace ViewModel.Infrastructure
 
             Expression currentExpression = expression;
 
-            while (currentExpression.NodeType != ExpressionType.Parameter && currentExpression.NodeType != ExpressionType.Default)
+            while (currentExpression != null && currentExpression.NodeType != ExpressionType.Parameter/* && currentExpression.NodeType != ExpressionType.Default*/)
             {
                 var handler = handlers.SingleOrDefault(h => h.CanHandle(currentExpression));
                 if (handler != null)

@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using NUnit.Framework;
-using ViewModel.Actions;
-using ViewModel.Models;
-using ViewModel.TestUtil;
+using ViewModeler.Actions;
+using ViewModeler.Models;
+using ViewModeler.TestUtil;
 
-namespace ViewModel.Tests.Actions
+namespace ViewModeler.Tests.Actions
 {
     [TestFixture]
     public class QueryTests
@@ -48,12 +46,12 @@ namespace ViewModel.Tests.Actions
                                                            }
                                                        });
 
-            Task.Factory.StartNew(() => command.Execute(null)).ContinueWith(prev =>
+            new Action(() => command.Execute(null)).BeginInvoke(prev =>
                                                                                 {
                                                                                     Assert.True(events.Count == 2);
                                                                                     Assert.True(events[0] == loading);
                                                                                     Assert.True(events[1] == still);
-                                                                                });
+                                                                                }, null);
         }
 
         [Test]
@@ -76,12 +74,12 @@ namespace ViewModel.Tests.Actions
                                                            }
                                                        });
 
-            Task.Factory.StartNew(() => command.Execute(null)).ContinueWith(prev =>
+            new Action(() => command.Execute(null)).BeginInvoke(prev =>
                                                                                 {
                                                                                     Assert.True(events.Count == 2);
                                                                                     Assert.True(events[0] == loading);
                                                                                     Assert.True(events[1] == faulted);
-                                                                                });
+                                                                                }, null);
         }
     }
 }

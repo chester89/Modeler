@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Moq;
 using NUnit.Framework;
-using ViewModel.Actions;
-using ViewModel.Conventions;
+using ViewModeler.Actions;
+using ViewModeler.Conventions;
 
-namespace ViewModel.Tests.Conventions
+namespace ViewModeler.Tests.Conventions
 {
     [TestFixture]
     public abstract class BaseConventionTest

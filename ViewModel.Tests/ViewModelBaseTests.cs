@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using Moq;
 using NUnit.Framework;
-using ViewModel.Models;
-using ViewModel.TestUtil;
+using ViewModeler.Models;
+using ViewModeler.TestUtil;
 
-namespace ViewModel.Tests
+namespace ViewModeler.Tests
 {
     [TestFixture]
     public class ViewModelBaseTests

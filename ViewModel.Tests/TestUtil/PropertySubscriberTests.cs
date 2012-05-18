@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using ViewModel.TestUtil;
+using ViewModeler.TestUtil;
 
-namespace ViewModel.Tests.TestUtil
+namespace ViewModeler.Tests.TestUtil
 {
     [TestFixture]
     public class PropertySubscriberTests

@@ -1,7 +1,7 @@
 using System;
 using System.Linq.Expressions;
 
-namespace ViewModel.Infrastructure
+namespace ViewModeler.Infrastructure
 {
     public class PropertyHandler : IExpressionHandler
     {
@@ -38,7 +38,7 @@ namespace ViewModel.Infrastructure
             {
                 return (expr as MemberExpression).Expression;
             }
-            return Expression.Empty();
+            return null;
         }
     }
 }

@@ -8,13 +8,14 @@
     <ProjectGuid>{E73D7B6B-5BA0-430A-9CB9-C810122F1FAA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ViewModel</RootNamespace>
-    <AssemblyName>ViewModel</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>ViewModeler</RootNamespace>
+    <AssemblyName>ViewModeler</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\WpfPostSharpTesting\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <DontImportPostSharp>True</DontImportPostSharp>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -24,7 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\ViewModel.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\ViewModeler.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,25 +34,24 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\ViewModel.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\ViewModeler.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentValidation">
-      <HintPath>..\packages\FluentValidation.3.2.0.0\lib\Net40\FluentValidation.dll</HintPath>
+    <Reference Include="FluentValidation, Version=2.0.0.0, Culture=neutral, PublicKeyToken=a82054b837897c66, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\FluentValidation.2.0.0.0\lib\NET35\FluentValidation.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="PostSharp, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
       <HintPath>..\packages\PostSharp.2.1.6.13\lib\net20\PostSharp.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="StructureMap">
-      <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+    <Reference Include="StructureMap, Version=2.6.3.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\binaries\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -62,7 +62,6 @@
     <Compile Include="Actions\ValidationQuery.cs" />
     <Compile Include="Aspects\BackgroundThreadAspect.cs" />
     <Compile Include="Aspects\DataErrorInfoAspect.cs" />
-    <Compile Include="Aspects\DependencyAttribute.cs" />
     <Compile Include="Aspects\NotifyPropertyChangedAspect.cs" />
     <Compile Include="Actions\Command.cs" />
     <Compile Include="Actions\ExitContext.cs" />
@@ -94,8 +93,6 @@
     <Compile Include="Actions\ActionBase.cs" />
     <Compile Include="ReflectionHelper.cs" />
     <Compile Include="TestUtil\PropertySubscriber.cs" />
-    <Compile Include="Validation\DataAnnotationsValidationProvider.cs" />
-    <Compile Include="Validation\DataAnnotationValidationResult.cs" />
     <Compile Include="Validation\FluentValidationProvider.cs" />
     <Compile Include="Validation\FluentValidationResult.cs" />
     <Compile Include="Validation\ValidationRegistry.cs" />

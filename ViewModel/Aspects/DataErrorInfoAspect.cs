@@ -4,10 +4,10 @@ using System.Linq;
 using PostSharp.Aspects;
 using PostSharp.Aspects.Advices;
 using PostSharp.Extensibility;
-using ViewModel.IoC;
-using ViewModel.Models;
+using ViewModeler.IoC;
+using ViewModeler.Models;
 
-namespace ViewModel.Aspects
+namespace ViewModeler.Aspects
 {
     [Serializable]
     [IntroduceInterface(typeof(IDataErrorInfo), OverrideAction = InterfaceOverrideAction.Ignore)]
@@ -34,7 +34,7 @@ namespace ViewModel.Aspects
             var viewModel = Instance as ViewModelBase;
             if(viewModel.IsValidationOn)
             {
-                var errors = validationProvider.Validate(viewModel).GetErrorsForProperty(propertyName).ToList();
+                var errors = validationProvider.Validate(viewModel).GetErrorsForProperty(propertyName).ToArray();
                 if (errors.Any())
                 {
                     return string.Join(", ", errors);

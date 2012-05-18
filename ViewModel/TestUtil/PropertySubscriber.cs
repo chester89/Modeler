@@ -4,9 +4,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
-using ViewModel.Infrastructure;
+using ViewModeler.Infrastructure;
 
-namespace ViewModel.TestUtil
+namespace ViewModeler.TestUtil
 {
     public static class SubscriberExtensions
     {

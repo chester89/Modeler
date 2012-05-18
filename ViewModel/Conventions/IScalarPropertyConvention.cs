@@ -4,9 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using PostSharp.Aspects;
-using ViewModel.Models;
+using ViewModeler.Models;
 
-namespace ViewModel.Conventions
+namespace ViewModeler.Conventions
 {
     /// <summary>
     /// Provides access to property data at runtime - it's really just a convenience wrapper around <see cref="LocationInterceptionArgs"/>

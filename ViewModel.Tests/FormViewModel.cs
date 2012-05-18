@@ -1,16 +1,15 @@
-﻿using System.Windows.Shell;
-using System.Windows.Input;
-using ViewModel.Actions;
-using ViewModel.Models;
+﻿using System.Windows.Input;
+using ViewModeler.Actions;
+using ViewModeler.Models;
 
-namespace ViewModel.Tests
+namespace ViewModeler.Tests
 {
     public class FormViewModel: ViewModelBase
     {
         public string Title { get; set; }
         public string Text { get; set; }
         public double BarValue { get; set; }
-        public TaskbarItemProgressState BarState { get; set; }
+        //public TaskbarItemProgressState BarState { get; set; }
         public bool TaskbarIconFlushes { get; set; }
 
         public ICommand Flash
@@ -31,12 +30,12 @@ namespace ViewModel.Tests
                         {
                             if (BarValue.Equals(0))
                             {
-                                BarState = TaskbarItemProgressState.Normal;
+                                //BarState = TaskbarItemProgressState.Normal;
                             }
                             BarValue = BarValue + 0.05;
                             if (BarValue >= 0.95)
                             {
-                                BarState = TaskbarItemProgressState.Error;
+                                //BarState = TaskbarItemProgressState.Error;
                             }
                         });
             }

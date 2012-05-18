@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
-using ViewModel.Models;
-using ViewModel.Tests;
+using ViewModeler.Models;
+using ViewModeler.Tests;
 
 namespace ViewModel
 {

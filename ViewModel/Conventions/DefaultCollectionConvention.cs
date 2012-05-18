@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Reflection;
-using ViewModel.IoC;
-using ViewModel.Models;
+using ViewModeler.IoC;
+using ViewModeler.Models;
 
-namespace ViewModel.Conventions
+namespace ViewModeler.Conventions
 {
     public class DefaultCollectionConvention : ConventionBase
     {
@@ -35,7 +35,7 @@ namespace ViewModel.Conventions
         {
             Type[] genericArguments = info.PropertyType.GetGenericArguments();
 
-            if (genericArguments.Any() && info.PropertyValue == null)
+            if (genericArguments.Any() && info.PropertyValue == null && info.PropertyType.IsClosedTypeOf(collectionBuilder.GetMinimumCollectionInterface()))
             {
                 info.PropertyValue = IoCContainer.Resolver.TryGetInstance(collectionBuilder.GetMinimumCollectionInterface().MakeGenericType(genericArguments));
             }

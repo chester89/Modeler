@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
-using ViewModel.Infrastructure;
-using ViewModel.Models;
+using ViewModeler.Infrastructure;
+using ViewModeler.Models;
 
 namespace WpfPostSharpTesting
 {

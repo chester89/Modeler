@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
-using ViewModel.Actions;
-using ViewModel.Models;
-using ViewModel.TestUtil;
+using ViewModeler.Actions;
+using ViewModeler.Models;
+using ViewModeler.TestUtil;
 
-namespace ViewModel.Tests.Actions
+namespace ViewModeler.Tests.Actions
 {
     [TestFixture]
     public class CommandTests
@@ -44,12 +43,12 @@ namespace ViewModel.Tests.Actions
                                                            }
                                                        });
 
-            Task.Factory.StartNew(() => command.Execute(null)).ContinueWith(prev =>
+            new Action(() => command.Execute(null)).BeginInvoke(c =>
                                                                                 {
                                                                                     Assert.True(events.Count == 2);
                                                                                     Assert.True(events[0] == "Uploading");
                                                                                     Assert.True(events[1] == "BackToStill");
-                                                                                });
+                                                                                }, null);
         }
 
         [Test]
@@ -75,12 +74,12 @@ namespace ViewModel.Tests.Actions
                 }
             });
 
-            Task.Factory.StartNew(() => command.Execute(null)).ContinueWith(prev =>
+            new Action(() => command.Execute(null)).BeginInvoke(prev =>
             {
                 Assert.True(events.Count == 2);
                 Assert.True(events[0] == "Uploading");
                 Assert.True(events[1] == "Faulted");
-            });
+            }, null);
         }
     }
 }

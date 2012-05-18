@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using FluentValidation;
-using ViewModel.Models;
+using ViewModeler.Models;
 
 namespace WpfPostSharpTesting
 {

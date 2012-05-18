@@ -4,7 +4,7 @@ using System.Linq;
 using Moq;
 using NUnit.Framework;
 
-namespace ViewModel.Tests
+namespace ViewModeler.Tests
 {
     [TestFixture]
     public class ConcurrentCollectionTests

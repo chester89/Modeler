@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
-using ViewModel.Models;
+using ViewModeler.Models;
 
-namespace ViewModel
+namespace ViewModeler
 {
     /// <summary>
     /// This collection allows to perform operations <see cref="ObservableCollection{T}"/>

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using Moq;
 using NUnit.Framework;
-using ViewModel.Conventions;
+using ViewModeler.Conventions;
 
-namespace ViewModel.Tests.Conventions
+namespace ViewModeler.Tests.Conventions
 {
     [TestFixture]
     public class ConventionBaseTests

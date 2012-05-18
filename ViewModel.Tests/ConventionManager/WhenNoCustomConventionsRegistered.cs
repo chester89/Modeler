@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
-using ViewModel.Conventions;
-using CM = ViewModel.Conventions.ConventionManager;
+using ViewModeler.Conventions;
+using CM = ViewModeler.Conventions.ConventionManager;
 
-namespace ViewModel.Tests.ConventionManager
+namespace ViewModeler.Tests.ConventionManager
 {
     [TestFixture]
     public class WhenNoCustomConventionsRegistered

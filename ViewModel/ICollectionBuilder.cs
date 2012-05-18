@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ViewModel.Models;
+using ViewModeler.Models;
 
-namespace ViewModel
+namespace ViewModeler
 {
     /// <summary>
     /// Provides access to instantiation point of every collection property on <see cref="ViewModelBase"/> subclasses

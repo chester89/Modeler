@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 
-namespace ViewModel.Tests
+namespace ViewModeler.Tests
 {
     [TestFixture]
     public class OnCollectionProperty
@@ -13,8 +13,8 @@ namespace ViewModel.Tests
         public void DefaultRuntimeCollectionTypeIsCollectionClosedTypeConfigured()
         {
             var vm = new TestViewModel();
-            var a = vm.List;
-            var propertyRuntimeType = vm.GetType().GetProperty("List").GetValue(vm, null).GetType();
+            var a = vm.Something;
+            var propertyRuntimeType = vm.GetType().GetProperty("Something").GetValue(vm, null).GetType();
             Assert.True(propertyRuntimeType.IsClosedTypeOf(typeof(ConcurrentObservableCollection<>)));
         }
     }

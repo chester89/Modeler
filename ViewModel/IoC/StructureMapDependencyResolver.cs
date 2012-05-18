@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using StructureMap;
-using ViewModel.IoC.Registries;
+using ViewModeler.IoC.Registries;
 
-namespace ViewModel.IoC
+namespace ViewModeler.IoC
 {
     /// <summary>
     /// Implementation of <see cref="IDependencyResolver"/> interface using StructureMap
@@ -43,15 +43,15 @@ namespace ViewModel.IoC
             return container.GetAllInstances<T>();
         }
 
-        public bool HasImplementationsFor<T>()
-        {
-            return container.Model.HasImplementationsFor<T>();
-        }
+        //public bool HasImplementationsFor<T>()
+        //{
+        //    return container.Model.HasImplementationsFor<T>();
+        //}
 
-        public bool HasImplementationsFor(Type requestedType)
-        {
-            return container.Model.HasImplementationsFor(requestedType);
-        }
+        //public bool HasImplementationsFor(Type requestedType)
+        //{
+        //    return container.Model.HasImplementationsFor(requestedType);
+        //}
 
         public void AssertConfigurationIsValid()
         {
