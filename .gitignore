@@ -1,6 +1,7 @@
 obj
 bin
 packages/*
+packaging/*
 packages/PostSharp.*/*
 packages/PostSharp.*/tools/*
 _ReSharper.*
@@ -12,6 +13,11 @@ _ReSharper.*
 *.cache
 *.swp
 
+!packaging
 !packages/PostSharp*/
 !packages/PostSharp*/tools/
 !packages/PostSharp*/tools/PostSharp.targets
+!packages/PostSharp*/tools/PostSharp.tasks
+!packages/PostSharp*/tools/*.rtf
+!packages/PostSharp*/tools/*.ps1
+!packaging/ViewModeler.nuspec
